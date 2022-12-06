@@ -136,10 +136,17 @@ body {
 #submit-btn {
   grid-area: submit-btn;
   font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  height: 27px;
 }
 #register {
   grid-area: register;
   color: white;
   font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+}
+.form-control {
+  height: 25px;
+  font-size: 20px;
 }
 </style>

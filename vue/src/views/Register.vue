@@ -160,5 +160,6 @@ export default {
   grid-area: login;
   color: white;
   font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
 }
 </style>
