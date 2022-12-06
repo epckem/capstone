@@ -20,7 +20,7 @@ CREATE TABLE restaurants (
     zip_code int NOT NULL,
     open_time TIME NOT NULL,
     close_time TIME NOT NULL,
-    open_status varchar(50) NULL,
+    rating numeric(5,1) NOT NULL,
     CONSTRAINT PK_restaurant PRIMARY KEY (restaurant_id)
 
 );
