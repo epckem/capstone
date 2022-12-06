@@ -118,6 +118,7 @@ export default {
   justify-content: center;
   color: white;
   font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
 }
 
 .second-grid {
