@@ -102,7 +102,8 @@ body {
   display: flex;
   align-items: end;
   justify-content: center;
-  color: rgb(112, 152, 66);
+  color: white;
+  font-family: "Times New Roman", Times, serif;
 }
 
 #second-grid {
@@ -126,15 +127,19 @@ body {
 
 #username {
   grid-area: username;
+  font-family: "Times New Roman", Times, serif;
 }
 #password {
   grid-area: password;
+  font-family: "Times New Roman", Times, serif;
 }
 #submit-btn {
   grid-area: submit-btn;
+  font-family: "Times New Roman", Times, serif;
 }
 #register {
   grid-area: register;
   color: white;
+  font-family: "Times New Roman", Times, serif;
 }
 </style>
