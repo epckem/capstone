@@ -116,8 +116,9 @@ export default {
   display: flex;
   align-items: end;
   justify-content: center;
-  color: white;
+  color: #e5ddc8;
   font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
 }
 
 .second-grid {
@@ -131,8 +132,8 @@ export default {
     "confirm-password"
     "submit-btn"
     "login";
-  background-color: rgb(218, 78, 97);
-  border: 10px rgb(218, 78, 97) solid;
+  background-color: #db1f48;
+  border: 10px #db1f48 solid;
   border-radius: 10px;
   padding-top: 40px;
   padding-bottom: 40px;
