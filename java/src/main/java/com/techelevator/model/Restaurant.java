@@ -4,7 +4,7 @@ package com.techelevator.model;
 import java.time.LocalTime;
 
 public class Restaurant {
-    private int id;
+    private int restaurant_id;
     private  String name;
     private String city;
     private  String state;
@@ -12,9 +12,11 @@ public class Restaurant {
     private String type;
     private LocalTime open;
     private LocalTime close;
+    private double rating;
+    private String address;
 
-    public Restaurant(int id, String name, String city, String state, int zipcode, String type, LocalTime open, LocalTime close) {
-        this.id = id;
+    public Restaurant(int restaurant_id, String name,  String type,String address,String city, String state, int zipcode, LocalTime open, LocalTime close, double rating) {
+        this.restaurant_id = restaurant_id;
         this.name = name;
         this.city = city;
         this.state = state;
@@ -22,10 +24,12 @@ public class Restaurant {
         this.type = type;
         this.open = open;
         this.close = close;
+        this.rating = rating;
+        this.address = address;
     }
 
     public int getId(){
-        return id;
+        return restaurant_id;
     }
 
     public String getName() {
@@ -46,6 +50,18 @@ public class Restaurant {
 
     public String getType() {
         return type;
+    }
+
+    public int getRestaurant_id() {
+        return restaurant_id;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public LocalTime getOpen() {
