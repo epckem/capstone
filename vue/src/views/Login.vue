@@ -117,8 +117,8 @@ body {
     "password"
     "submit-btn"
     "register";
-  background-color: rgb(218, 78, 97);
-  border: 10px rgb(218, 78, 97) solid;
+  background-color: #db1f48;
+  border: 10px #db1f48 solid;
   border-radius: 10px;
   padding-top: 40px;
   padding-bottom: 40px;
