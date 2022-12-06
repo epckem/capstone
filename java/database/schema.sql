@@ -12,7 +12,9 @@ CREATE TABLE users (
 
 CREATE TABLE restaurants (
     restaurant_id SERIAL,
+    img varchar(255) NULL,
     name varchar(50) NOT NULL,
+    description varchar(1000) NULL,
     type varchar(50) NOT NULL,
     address varchar(50) NOT NULL UNIQUE,
     city varchar(50) NOT NULL,
@@ -21,6 +23,7 @@ CREATE TABLE restaurants (
     open_time TIME NOT NULL,
     close_time TIME NOT NULL,
     rating numeric(5,1) NOT NULL,
+    phone varchar(10) NULL,
     CONSTRAINT PK_restaurant PRIMARY KEY (restaurant_id)
 
 );

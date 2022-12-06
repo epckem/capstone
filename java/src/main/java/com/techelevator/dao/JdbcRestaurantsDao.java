@@ -3,11 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.model.Restaurant;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcRestaurantsDao implements RestaurantDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -19,33 +21,33 @@ public class JdbcRestaurantsDao implements RestaurantDao {
     @Override
     public List<Restaurant> getRestaurants() {
 
-        final String sql = "SELECT restaurant_id, name, type, address, city, state_abbrev, zip_code, open_time, close_time, rating\n" +
+        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
                 "FROM restaurants;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql);
         final List<Restaurant> restaurants = new ArrayList<>();
         while (results.next()) {
-//            LocalTime openTime = null;
-//            if (results.getTime("open_time").toLocalTime() != null) {
-//                openTime = results.getTime("open_time").toLocalTime();
-//            }
-//            LocalTime closeTime = null;
-//            if (results.getTime("close_time").toLocalTime() != null) {
-//                closeTime = results.getTime("close_time").toLocalTime();
-//            }
-            final Restaurant restaurant = new Restaurant(
-                    results.getInt("restaurant_id"),
-                    results.getString("name"),
-                    results.getString("type"),
-                    results.getString("address"),
-                    results.getString("city"),
-                    results.getString("state_abbrev"),
-                    results.getInt("zip_code"),
-                    results.getTime("open_time").toLocalTime(),
-                    results.getTime("close_time").toLocalTime(),
-                    results.getDouble("rating")
-            );
-             restaurants.add(restaurant);
+            restaurants.add(mapRowToRestaurant(results));
         }
         return restaurants;
     }
+
+    private Restaurant mapRowToRestaurant(SqlRowSet rowSet) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestaurant_id(rowSet.getInt("restaurant_id"));
+        restaurant.setImg(rowSet.getString("img"));
+        restaurant.setName(rowSet.getString("name"));
+        restaurant.setDescription(rowSet.getString("description"));
+        restaurant.setType(rowSet.getString("type"));
+        restaurant.setAddress(rowSet.getString("address"));
+        restaurant.setCity(rowSet.getString("city"));
+        restaurant.setState(rowSet.getString("state_abbrev"));
+        restaurant.setZipcode(rowSet.getInt("zip_code"));
+        restaurant.setOpen(rowSet.getTime("open_time").toLocalTime());
+        restaurant.setClose(rowSet.getTime("close_time").toLocalTime());
+        restaurant.setRating(rowSet.getDouble("rating"));
+        restaurant.setPhoneNumber(rowSet.getString("phone"));
+
+        return restaurant;
+    }
+
 }
