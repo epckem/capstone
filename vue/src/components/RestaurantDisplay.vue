@@ -1,7 +1,7 @@
 <template>
   <div class="restaurant">
     <div id="img-container">
-      <!-- <img v-bind:src={{restaurant.img}} -->
+      <img v-bind:src="restaurant.img" />
       <div class="rating">
         <img
           src="../assets/star.png"
@@ -18,7 +18,9 @@
         {{ restaurant.address }} {{ restaurant.city }},
         {{ restaurant.state_abbrev }}
       </h3>
-      <p>{{ restaurant.open }} - {{ restaurant.close }}</p>
+      <p>
+        {{ convertTime(restaurant.open) }} - {{ convertTime(restaurant.close) }}
+      </p>
       <!-- <p>
       Favorite?
       <input
@@ -32,6 +34,7 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   name: "restaurant-display",
   props: ["restaurant"],
@@ -40,21 +43,21 @@ export default {
   //       this.$store.commit("FLIP_FAVORITED", restaurant);
   //     },
   //   },
+  methods: {
+    convertTime(time) {
+      return moment(time, "HH:mm:ss").format("h:mm A");
+    },
+  },
 };
 </script>
 
 <style>
-#restaurant-container {
-  display: flex;
-  justify-content: center;
-  background-color: red;
-}
-
 div.main div.restaurant {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: row;
+  text-align: center;
   border: 1px black solid;
   background-color: white;
   border-radius: 6px;
@@ -70,7 +73,6 @@ div.main div.restaurant {
 
 div.main div.restaurant div.rating {
   height: 2rem;
-  display: flex;
   vertical-align: top;
   margin: 0 0.5rem;
 }
