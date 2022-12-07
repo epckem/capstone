@@ -38,11 +38,13 @@ export default {
 
 <style scoped>
 div.main {
+  background-color: red;
   margin: 1rem 0;
 }
 div.main div.well-display {
   display: flex;
   justify-content: space-around;
+  background-color: red;
 }
 
 div.main div.well-display div.well {
@@ -52,6 +54,7 @@ div.main div.well-display div.well {
   border-radius: 6px;
   text-align: center;
   margin: 0.25rem;
+  background-color: red;
 }
 
 div.main div.well-display div.well span.amount {

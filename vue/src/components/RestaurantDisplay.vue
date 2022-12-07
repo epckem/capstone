@@ -1,6 +1,6 @@
 <template>
-  <div class="restaurant" v-bind:key="restaurant.restaurant_id">
-    <h4>{{ restaurant.name }}</h4>
+  <div class="restaurant">
+    <h1>{{ restaurant.name }}</h1>
     <div class="rating">
       <img
         src="../assets/star.png"
@@ -14,7 +14,7 @@
       {{ restaurant.address }} {{ restaurant.city }},
       {{ restaurant.state_abbrev }}
     </h3>
-    <p>{{ restaurant.open }} - {{ restaurant.close }}}}</p>
+    <p>{{ restaurant.open }} - {{ restaurant.close }}</p>
     <!-- <p>
       Favorite?
       <input
@@ -38,21 +38,34 @@ export default {
 };
 </script>
 
-<style scoped>
-div.main div.restaurant {
-  border: 1px black solid;
-  border-radius: 6px;
-  padding: 1rem;
-  margin: 10px;
+<style>
+#restaurant-container {
+  display: flex;
+  justify-content: center;
+  background-color: red;
 }
 
-/* div.main div.restaurant.favorited {
+div.main div.restaurant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px black solid;
+  background-color: white;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-right: 20rem;
+  margin-left: 20rem;
+  margin-top: 1rem;
+}
+
+/* div.main div.restaurant {
   background-color: lightyellow;
 } */
 
 div.main div.restaurant div.rating {
   height: 2rem;
-  display: inline-block;
+  display: flex;
   vertical-align: top;
   margin: 0 0.5rem;
 }
@@ -69,8 +82,8 @@ div.main div.restaurant h3 {
   display: inline-block;
 }
 
-div.main div.restaurant h4 {
+/* div.main div.restaurant h1 {
   font-size: 1rem;
-}
+} */
 </style>
 
