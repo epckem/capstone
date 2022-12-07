@@ -23,7 +23,7 @@ CREATE TABLE restaurants (
     open_time TIME NOT NULL,
     close_time TIME NOT NULL,
     rating numeric(5,1) NOT NULL,
-    phone varchar(10) NULL,
+    phone varchar(14) NULL,
     CONSTRAINT PK_restaurant PRIMARY KEY (restaurant_id)
 
 );
