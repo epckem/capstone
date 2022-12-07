@@ -62,17 +62,31 @@ export default {
   },
   methods: {
     createEvent() {
-      InviteService.addEvent(this.event).then((response) => {
-        if (response.status == 201) {
-          this.event = {
-            eventName: "",
-            location: "",
-            date: "",
-          };
-          this.$router.push({ name: "home" });
-          //TODO: change the path to the profile page
-        }
-      });
+      InviteService.addEvent(this.event)
+        .then((response) => {
+          if (response.status == 201) {
+            this.event = {
+              eventName: "",
+              location: "",
+              date: "",
+            };
+            this.$router.push({ name: "home" });
+          }
+        })
+        .catch((error) => {
+          if (error.response) {
+            this.errorMsg =
+              "There was an error adding the event. Response received was '" +
+              error.response.statusText +
+              "'.";
+          } else if (error.request) {
+            this.errorMsg =
+              "There was an error adding the event. Server could not be reached.";
+          } else {
+            this.errorMsg =
+              "There was an error adding the event. Request could not be created.";
+          }
+        });
     },
   },
 };
