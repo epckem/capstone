@@ -7,6 +7,7 @@
         >Invite</router-link
       >&nbsp;|&nbsp;
       <router-link
+        id="list"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
@@ -15,7 +16,7 @@
     <router-view />
   </div>
 </template>
-<style scoped>
+<style>
 #home-btn {
   color: white;
   text-decoration: none;
