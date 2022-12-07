@@ -18,5 +18,6 @@ export default {
 <style>
 body.invite {
   background-image: none;
+  background-color: #01949a;
 }
 </style>

@@ -38,7 +38,7 @@
           v-model="event.date"
           required
         />
-        <button type="submit">Generate Link!</button>
+        <button id="generate-btn" type="submit">Generate Link!</button>
         <p id="generatedLink">Invitation Link:</p>
       </div>
     </form>
@@ -91,5 +91,21 @@ form {
   grid-area: main-grid;
   display: flex;
   flex-direction: column;
+}
+#formContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+label {
+  font-size: 20px;
+}
+.form-control {
+  height: 25px;
+  font-size: 20px;
+}
+.generate-btn {
+  height: 27px;
+  font-size: 20px;
 }
 </style>

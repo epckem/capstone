@@ -21,8 +21,8 @@ export default {
 
 <style>
 body.home {
-  background-image: url("https://iili.io/HCPiZ3F.jpg");
-  background-size: cover;
+  background-image: none;
+  background-color: #004369;
 }
 </style>
 

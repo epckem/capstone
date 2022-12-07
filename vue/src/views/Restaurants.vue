@@ -9,11 +9,23 @@
 import RestaurantList from "../components/RestaurantsList.vue";
 
 export default {
+  beforeCreate() {
+    document.body.className = "restaurants";
+  },
+  name: "restaurants",
   components: {
     RestaurantList,
   },
 };
-</script >
+</script>
+
+<style>
+body.restaurants {
+  background-image: none;
+  background-color: #01949a;
+}
+</style>
+
 <style scoped>
 #main {
   display: flex;
