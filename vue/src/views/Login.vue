@@ -47,6 +47,9 @@
 import authService from "../services/AuthService";
 
 export default {
+  beforeCreate() {
+    document.body.className = "login";
+  },
   name: "login",
   components: {},
   data() {
@@ -81,7 +84,14 @@ export default {
 };
 </script>
 
-<style  >
+<style>
+body.login {
+  background-image: url("https://iili.io/HCPiZ3F.jpg");
+  background-size: cover;
+}
+</style>
+
+<style scoped >
 #main-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -91,11 +101,6 @@ export default {
     ".  sign-in       ."
     ".  second-grid   ."
     ".  .             .";
-}
-
-body {
-  background-image: url("https://iili.io/HCPiZ3F.jpg");
-  background-size: cover;
 }
 
 #sign-in {

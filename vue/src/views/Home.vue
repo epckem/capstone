@@ -10,11 +10,22 @@
 import RestaurantsList from "../components/RestaurantsList.vue";
 
 export default {
+  beforeCreate() {
+    document.body.className = "home";
+  },
   components: {
     RestaurantsList,
   },
 };
 </script>
+
+<style>
+body.home {
+  background-image: url("https://iili.io/HCPiZ3F.jpg");
+  background-size: cover;
+}
+</style>
+
 <style scoped>
 h1,
 p {

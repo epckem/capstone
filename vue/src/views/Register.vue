@@ -54,6 +54,9 @@
 import authService from "../services/AuthService";
 
 export default {
+  beforeCreate() {
+    document.body.className = "login";
+  },
   name: "register",
   data() {
     return {
@@ -99,6 +102,13 @@ export default {
   },
 };
 </script>
+
+<style>
+body.login {
+  background-image: url("https://iili.io/HCPiZ3F.jpg");
+  background-size: cover;
+}
+</style>
 
 <style scoped>
 #main-grid {
