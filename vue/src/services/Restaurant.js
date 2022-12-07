@@ -5,7 +5,7 @@ export default {
         return http.get("/restaurants");
     },
 
-    getRestaurant() {
-        return http.get("/restaurants/id");
+    getRestaurant(id) {
+        return http.get(`/restaurants/${id}`);
     }
 }
