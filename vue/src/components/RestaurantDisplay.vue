@@ -1,21 +1,25 @@
 <template>
   <div class="restaurant">
-    <h1>{{ restaurant.name }}</h1>
-    <div class="rating">
-      <img
-        src="../assets/star.png"
-        v-bind:title="restaurant.rating + ' Star Review'"
-        class="ratingStar"
-        v-for="n in Math.ceil(restaurant.rating)"
-        v-bind:key="n"
-      />
+    <div id="img-container">
+      <!-- <img v-bind:src={{restaurant.img}} -->
+      <div class="rating">
+        <img
+          src="../assets/star.png"
+          v-bind:title="restaurant.rating + ' Star Review'"
+          class="ratingStar"
+          v-for="n in Math.ceil(restaurant.rating)"
+          v-bind:key="n"
+        />
+      </div>
     </div>
-    <h3>
-      {{ restaurant.address }} {{ restaurant.city }},
-      {{ restaurant.state_abbrev }}
-    </h3>
-    <p>{{ restaurant.open }} - {{ restaurant.close }}</p>
-    <!-- <p>
+    <div id="restaurant-info">
+      <h1>{{ restaurant.name }}</h1>
+      <h3>
+        {{ restaurant.address }} {{ restaurant.city }},
+        {{ restaurant.state_abbrev }}
+      </h3>
+      <p>{{ restaurant.open }} - {{ restaurant.close }}</p>
+      <!-- <p>
       Favorite?
       <input
         type="checkbox"
@@ -23,6 +27,7 @@
         v-on:change="onFavoritedChange(restaurant)"
       />
     </p> -->
+    </div>
   </div>
 </template>
 
@@ -48,8 +53,8 @@ export default {
 div.main div.restaurant {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-evenly;
+  flex-direction: row;
   border: 1px black solid;
   background-color: white;
   border-radius: 6px;
