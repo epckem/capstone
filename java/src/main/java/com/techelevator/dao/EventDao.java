@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EventDao {
 
-    List<Event> getEvents(int id);
+    List<Event> getEventsById(int id);
 
     Event createEvent(Event event);
 
