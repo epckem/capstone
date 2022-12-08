@@ -19,7 +19,7 @@
         Thank you for registering, please sign in.
       </div>
       <div id="second-grid">
-        <label for="username" class="sr-only" id="username">Username</label>
+        <label for="username" class="sr-only" id="username"></label>
         <input
           type="text"
           id="username"
@@ -29,7 +29,7 @@
           required
           autofocus
         />
-        <label for="password" class="sr-only" id="password">Password</label>
+        <label for="password" class="sr-only" id="password"></label>
         <input
           type="password"
           id="password"
@@ -41,6 +41,7 @@
         <router-link :to="{ name: 'register' }" id="register"
           >Need an account?</router-link
         >
+
         <button type="submit" id="submit-btn">Sign in</button>
       </div>
 
@@ -151,6 +152,8 @@ body.login {
   font-family: "Times New Roman", Times, serif;
   font-size: 20px;
   height: 27px;
+  width: 440px;
+  margin: 0 auto;
 }
 #register {
   grid-area: register;
@@ -159,8 +162,17 @@ body.login {
   font-size: 20px;
 }
 .form-control {
-  height: 25px;
-  font-size: 20px;
+  display: block;
+  width: 350px;
+  margin: 20px auto;
+  padding: 10px 45px;
+  background: white no-repeat 15px center;
+  background-size: 15px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 #invalid {

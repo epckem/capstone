@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,23 +32,24 @@ public class JdbcEventDao implements EventDao{
     }
 
     @Override
-    public Event createEvent(Event event) {
+    public Event createEvent(String eventName, String location, Timestamp decisionDate) {
         final String sql = "INSERT INTO events(\n" +
-                "\tuser_id, eventname, location, decisiondate, inviteurl)\n" +
-                "\tVALUES (?, ?, ?, ?, ?);";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, event.getEventName(), event.getLocation(), event.getDecisionDate(), event.getInviteUrl());
-        return event;
+                "\teventname, location, decisiondate)\n" +
+                "\tVALUES (?, ?, ?);";
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, location, decisionDate);
+        return null ;
+        //TODO: return URL for event
     }
 
 
-   @Override
-   public boolean createEvent(int userId, String eventName, String location, LocalDateTime decisionDate, String inviteUrl) {
-       final String sql = "INSERT INTO events(\n" +
-               "\tuser_id, eventname, location, decisiondate, inviteurl)\n" +
-               "\tVALUES (?, ?, ?, ?, ?);";
-       Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, even)
-       return false;
-   }
+//   @Override
+//   public boolean createEvent(int userId, String eventName, String location, LocalDateTime decisionDate, String inviteUrl) {
+//       final String sql = "INSERT INTO events(\n" +
+//               "\tuser_id, eventname, location, decisiondate, inviteurl)\n" +
+//               "\tVALUES (?, ?, ?, ?, ?);";
+//       Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, even)
+//       return false;
+//   }
 
    private Event mapRowToEvent(SqlRowSet rowSet) {
        Event event = new Event();
