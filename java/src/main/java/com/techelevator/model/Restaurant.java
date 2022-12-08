@@ -12,7 +12,7 @@ public class Restaurant {
     private String address;
     private String city;
     private  String state;
-    private int zipcode;
+    private String zipcode;
     private LocalTime open;
     private LocalTime close;
     private double rating;
@@ -21,7 +21,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(int restaurant_id, String img, String name, String description, String type, String address, String city, String state, int zipcode, LocalTime open, LocalTime close, double rating, String phoneNumber) {
+    public Restaurant(int restaurant_id, String img, String name, String description, String type, String address, String city, String state, String zipcode, LocalTime open, LocalTime close, double rating, String phoneNumber) {
         this.restaurant_id = restaurant_id;
         this.img = img;
         this.name = name;
@@ -85,7 +85,7 @@ public class Restaurant {
         this.state = state;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -121,7 +121,7 @@ public class Restaurant {
         return state;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
