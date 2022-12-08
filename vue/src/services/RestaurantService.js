@@ -1,10 +1,10 @@
 import http from 'axios';
 
 export default {
-    getRestaurants(city, zip) {
+    getRestaurants(city, zipcode) {
         const options = {
             params: {
-                zip,
+                zipcode,
                 city
             }
         };

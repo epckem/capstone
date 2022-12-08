@@ -15,8 +15,8 @@
     <div id="restaurant-info">
       <h1>{{ restaurant.name }}</h1>
       <h3>
-        {{ restaurant.address }} {{ restaurant.city }},
-        {{ restaurant.state_abbrev }}
+        {{ restaurant.address }} {{ restaurant.city }}, {{ restaurant.state }} -
+        {{ restaurant.zipcode }}
       </h3>
       <p>
         {{ convertTime(restaurant.open) }} - {{ convertTime(restaurant.close) }}

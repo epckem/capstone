@@ -1,11 +1,17 @@
 <template>
   <div class="restaurants">
     <h1>Restaurants</h1>
-    <input
-      type="text"
-      v-model="input"
-      placeholder="Search by ZipCode or City"
-    />
+    <div class="search-filter">
+      <input
+        type="text"
+        v-model="searchTerm"
+        placeholder="Search by ZipCode or City"
+        v-on:keyup.enter="retrieveRestaurants(searchTerm)"
+      />
+    </div>
+
+    <h1 v-if="showMessage">Sorry no search results found. Try again!</h1>
+
     <!-- <div
       class="search filter"
       v-for="restaurant in filteredList"
@@ -36,8 +42,9 @@ export default {
   name: "restaurant-list",
   data() {
     return {
-      input: "",
+      searchTerm: "",
       isLoading: false,
+      showMessage: false,
     };
   },
   components: {
@@ -45,6 +52,7 @@ export default {
   },
   created() {
     this.retrieveRestaurants();
+    this.noSearchResults();
     // TODO .catch()
   },
   computed: {
@@ -58,11 +66,20 @@ export default {
     // },
   },
   methods: {
-    retrieveRestaurants() {
-      RestaurantService.getRestaurants().then((response) => {
+    retrieveRestaurants(search) {
+      RestaurantService.getRestaurants(search, search).then((response) => {
         this.$store.commit("SET_RESTAURANTS", response.data);
+        this.searchTerm = "";
+        if (response.data.length === 0) {
+          this.showMessage = true;
+        }
       });
     },
+    // noSearchResults() {
+    //   if (this.retrieveRestaurants.length() > 0) {
+    //     this.showMessage = true;
+    //   }
+    // },
   },
 };
 </script>
