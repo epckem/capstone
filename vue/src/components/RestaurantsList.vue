@@ -72,6 +72,8 @@ export default {
         this.searchTerm = "";
         if (response.data.length === 0) {
           this.showMessage = true;
+        } else {
+          this.showMessage = false;
         }
       });
     },
