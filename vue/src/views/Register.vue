@@ -90,7 +90,7 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = "Bad Request: Validation Errors";
+              this.registrationErrorMsg = "Bad Request: Account Already Exists";
             }
           });
       }
@@ -126,7 +126,7 @@ body.login {
   display: flex;
   align-items: end;
   justify-content: center;
-  color: #e5ddc8;
+  color: white;
   font-family: "Times New Roman", Times, serif;
   font-size: 40px;
 }
@@ -178,5 +178,9 @@ body.login {
 .form-control {
   height: 25px;
   font-size: 20px;
+}
+.alert-danger {
+  color: white;
+  font-size: large;
 }
 </style>

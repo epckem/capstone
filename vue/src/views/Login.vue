@@ -2,10 +2,16 @@
   <div id="login" class="text-center">
     <form id="main-grid" class="form-signin" @submit.prevent="login">
       <h1 id="sign-in" class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+      <div
+        id="invalid"
+        class="alert alert-danger"
+        role="alert"
+        v-if="invalidCredentials"
+      >
         Invalid username and password!
       </div>
       <div
+        id="registered"
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
@@ -155,5 +161,14 @@ body.login {
 .form-control {
   height: 25px;
   font-size: 20px;
+}
+
+#invalid {
+  color: white;
+  font-size: large;
+}
+#registered {
+  color: white;
+  font-size: large;
 }
 </style>
