@@ -1,30 +1,31 @@
 package com.techelevator.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Event {
-    private int event_id;
-    private int user_id;
+    private int eventId;
+    private int userId;
     private String eventName;
     private String location;
-    private LocalDateTime decisionDate;
+    private Timestamp decisionDate;
     private String inviteUrl;
 
     public Event() {
 
     }
 
-    public Event(int event_id, int user_id, String eventName, String location, LocalDateTime decisionDate,  String inviteUrl) {
-        this.event_id = event_id;
-        this.user_id = user_id;
+    public Event(int eventId, int userId, String eventName, String location, Timestamp decisionDate,  String inviteUrl) {
+        this.eventId = eventId;
+        this.userId = this.userId;
         this.eventName = eventName;
         this.location = location;
         this.decisionDate = decisionDate;
         this.inviteUrl = inviteUrl;
     }
 
-    public int getEvent_id() {
-        return event_id;
+    public int getEventId() {
+        return eventId;
     }
 
     public String getEventName() {
@@ -35,16 +36,24 @@ public class Event {
         return location;
     }
 
-    public LocalDateTime getDecisionDate() {
+    public Timestamp getDecisionDate() {
         return decisionDate;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
     public String getInviteUrl() {
         return inviteUrl;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
     public void setEventName(String eventName) {
@@ -55,7 +64,7 @@ public class Event {
         this.location = location;
     }
 
-    public void setDecisionDate(LocalDateTime decisionDate) {
+    public void setDecisionDate(Timestamp decisionDate) {
         this.decisionDate = decisionDate;
     }
 
