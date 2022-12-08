@@ -22,5 +22,6 @@ INSERT INTO restaurants(img, name, description,type, address, city, state_abbrev
 	VALUES ('https://s3-media0.fl.yelpcdn.com/bphoto/8UvVLOXlZDkJeUfuBOLE5Q/348s.jpg', 'Nada', 'Reservations, Outdoor Seating, Seating, Television, Highchairs Available, Wheelchair Accessible, Serves Alcohol, Full Bar, Free Wifi, Accepts Credit Cards, Table Service, Wine and Beer, Gift Cards Available', 'Mexican', '600 Walnut St', 'Cincinnati', 'OH', '45202', '11:00:00', '23:00:00', '4.4', '(513) 721-6232');
 INSERT INTO restaurants(img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone)
 	VALUES ('https://s3-media3.fl.yelpcdn.com/bphoto/-AlgYmyXWcH9BlY9mpDPug/ms.jpg', 'Mita''s Restaurant', 'Mitas eclectic, farm-inspired menu focuses on both the traditional and modern foods and beverages of Spain and Latin America - with tapas, ceviches, cured hams, cheeses and large plates.  The wine program emphasizes Spain and the Old World.', 'Mexican', '501 Race St', 'Cincinnati', 'OH', '45202', '11:00:00', '23:00:00', '4.6', '(513) 421-6482');
-
+INSERT INTO events(user_id, eventname, location, decisiondate, inviteurl)
+	VALUES (1, 'Saturday Dinner', '45202', '2022-12-10 10:00:00', 'testURL');
 COMMIT TRANSACTION;
