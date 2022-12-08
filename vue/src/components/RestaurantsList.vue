@@ -44,9 +44,7 @@ export default {
     RestaurantDisplay,
   },
   created() {
-    RestaurantService.getRestaurants().then((response) => {
-      this.$store.commit("SET_RESTAURANTS", response.data);
-    });
+    this.retrieveRestaurants();
     // TODO .catch()
   },
   computed: {
@@ -58,6 +56,13 @@ export default {
     //     restaurant.includes(this.input.toLowerCase())
     //   );
     // },
+  },
+  methods: {
+    retrieveRestaurants() {
+      RestaurantService.getRestaurants().then((response) => {
+        this.$store.commit("SET_RESTAURANTS", response.data);
+      });
+    },
   },
 };
 </script>

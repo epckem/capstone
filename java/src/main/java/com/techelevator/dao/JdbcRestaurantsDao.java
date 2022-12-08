@@ -35,7 +35,7 @@ public class JdbcRestaurantsDao implements RestaurantDao {
     public List<Restaurant> filteredRestaurants(String zipcode, String city) {
         final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
                 "FROM restaurants\n" +
-                "WHERE zip_code ILIKE = ? OR city ILIKE = ?";
+                "WHERE zip_code ILIKE ? OR city ILIKE  ?;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, '%' + zipcode + '%', '%' + city + '%');
         final List<Restaurant> restaurants = new ArrayList<>();
         while (results.next()) {

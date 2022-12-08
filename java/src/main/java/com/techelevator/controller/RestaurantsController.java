@@ -3,10 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.RestaurantDao;
 import com.techelevator.model.Restaurant;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +15,14 @@ public class RestaurantsController {
 
     RestaurantsController(RestaurantDao restaurantDao){this.restaurantDao = restaurantDao;}
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/restaurants")
-    public List<Restaurant> getAll(){return  this.restaurantDao.getRestaurants();}
+//    @ResponseStatus(HttpStatus.OK)
+//    @GetMapping("/restaurants")
+//    public List<Restaurant> getAll(){return  this.restaurantDao.getRestaurants();}
 
     @GetMapping("/restaurants")
-    public List<Restaurant> filteredBy() {
-        return null;
+    public List<Restaurant> filteredBy(@RequestParam(defaultValue = "") String zipcode,
+                                       @RequestParam(defaultValue = "") String city) {
+        return this.restaurantDao.filteredRestaurants(zipcode, city);
     }
 
 }

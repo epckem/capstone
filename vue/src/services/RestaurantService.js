@@ -1,8 +1,14 @@
 import http from 'axios';
 
 export default {
-    getRestaurants() {
-        return http.get("/restaurants");
+    getRestaurants(city, zip) {
+        const options = {
+            params: {
+                zip,
+                city
+            }
+        };
+        return http.get("/restaurants", options);
     },
 
     getRestaurant(id) {
