@@ -22,4 +22,9 @@ public class RestaurantsController {
     @GetMapping("/restaurants")
     public List<Restaurant> getAll(){return  this.restaurantDao.getRestaurants();}
 
+    @GetMapping("/restaurants")
+    public List<Restaurant> filteredBy() {
+        return null;
+    }
+
 }

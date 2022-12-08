@@ -19,7 +19,7 @@ CREATE TABLE restaurants (
     address varchar(50) NOT NULL UNIQUE,
     city varchar(50) NOT NULL,
     state_abbrev varchar(50) NOT NULL,
-    zip_code int NOT NULL,
+    zip_code varchar(12) NOT NULL,
     open_time TIME NOT NULL,
     close_time TIME NOT NULL,
     rating numeric(5,1) NOT NULL,

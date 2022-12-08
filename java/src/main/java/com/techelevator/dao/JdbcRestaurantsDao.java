@@ -31,6 +31,20 @@ public class JdbcRestaurantsDao implements RestaurantDao {
         return restaurants;
     }
 
+    @Override
+    public List<Restaurant> filteredRestaurants(String zipcode, String city) {
+        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
+                "FROM restaurants\n" +
+                "WHERE zip_code ILIKE = ? OR city ILIKE = ?";
+        final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, '%' + zipcode + '%', '%' + city + '%');
+        final List<Restaurant> restaurants = new ArrayList<>();
+        while (results.next()) {
+            restaurants.add(mapRowToRestaurant(results));
+        }
+        return restaurants;
+    }
+
+
     private Restaurant mapRowToRestaurant(SqlRowSet rowSet) {
         Restaurant restaurant = new Restaurant();
         restaurant.setRestaurant_id(rowSet.getInt("restaurant_id"));
@@ -41,7 +55,7 @@ public class JdbcRestaurantsDao implements RestaurantDao {
         restaurant.setAddress(rowSet.getString("address"));
         restaurant.setCity(rowSet.getString("city"));
         restaurant.setState(rowSet.getString("state_abbrev"));
-        restaurant.setZipcode(rowSet.getInt("zip_code"));
+        restaurant.setZipcode(rowSet.getString("zip_code"));
         restaurant.setOpen(rowSet.getTime("open_time").toLocalTime());
         restaurant.setClose(rowSet.getTime("close_time").toLocalTime());
         restaurant.setRating(rowSet.getDouble("rating"));
