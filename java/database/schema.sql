@@ -34,7 +34,7 @@ CREATE TABLE events (
     eventName VARCHAR(200) NOT NULL,
     location VARCHAR(50) NOT NULL,
     decisionDate TIMESTAMP NOT NULL,
-    uuid VARCHAR(250) NOT NULL,
+    inviteCode VARCHAR(250) NOT NULL,
     CONSTRAINT PK_event PRIMARY KEY (event_id),
     CONSTRAINT FK_event FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
