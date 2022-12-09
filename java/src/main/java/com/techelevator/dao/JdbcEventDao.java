@@ -34,11 +34,10 @@ public class JdbcEventDao implements EventDao{
     @Override
     public void createEvent(Event event) {
         final String sql = "INSERT INTO events(\n" +
-                "\tuser_id, eventname, location, decisiondate)\n" +
+                "\teventname, location, decisiondate)\n" +
                 "\tVALUES (?, ?, ?, ?);";
         jdbcTemplate.update(sql,
                 Integer.class,
-                event.getUserId(),
                 event.getEventName(),
                 event.getLocation(),
                 event.getDecisionDate());
