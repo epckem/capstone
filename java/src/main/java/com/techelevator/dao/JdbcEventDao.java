@@ -32,13 +32,17 @@ public class JdbcEventDao implements EventDao{
     }
 
     @Override
-    public Event createEvent(String eventName, String location, Timestamp decisionDate) {
+    public void createEvent(Event event) {
         final String sql = "INSERT INTO events(\n" +
-                "\teventname, location, decisiondate)\n" +
-                "\tVALUES (?, ?, ?);";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, location, decisionDate);
-        return null ;
-        //TODO: return URL for event
+                "\tuser_id, eventname, location, decisiondate)\n" +
+                "\tVALUES (?, ?, ?, ?);";
+        jdbcTemplate.update(sql,
+                Integer.class,
+                event.getUserId(),
+                event.getEventName(),
+                event.getLocation(),
+                event.getDecisionDate());
+
     }
 
 

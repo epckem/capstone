@@ -8,7 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 import java.util.List;
 
 @PreAuthorize("isAuthenticated()")
@@ -25,16 +25,19 @@ public class EventsController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/events/{id}")
-    public List<Event> getEventsById(Principal principal, @PathVariable int id) {
+    @GetMapping("/events")
+    public List<Event> getEventsById(Principal principal) {
         User user = userDao.findByUsername(principal.getName());
-        id = user.getId();
+        int id = user.getId();
         return this.eventDao.getEventsById(id);
     }
 
     @PostMapping("/events")
-    public void addEvent(@RequestParam String eventName, @RequestParam String location, @RequestParam Timestamp decisionDate) {
-        eventDao.createEvent(eventName, location, decisionDate);
+    public Event addEvent( @RequestBody Event event) {
+
+        this.eventDao.createEvent(event);
+
+        return event;
     }
     //TODO: link???
 

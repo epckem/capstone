@@ -9,19 +9,19 @@ public class Event {
     private String eventName;
     private String location;
     private Timestamp decisionDate;
-    private String inviteUrl;
+    private String UUID;
 
     public Event() {
 
     }
 
-    public Event(int eventId, int userId, String eventName, String location, Timestamp decisionDate,  String inviteUrl) {
+    public Event(int eventId, int userId, String eventName, String location, Timestamp decisionDate,  String UUID) {
         this.eventId = eventId;
         this.userId = this.userId;
         this.eventName = eventName;
         this.location = location;
         this.decisionDate = decisionDate;
-        this.inviteUrl = inviteUrl;
+        this.UUID = UUID;
     }
 
     public int getEventId() {
@@ -44,8 +44,8 @@ public class Event {
         return userId;
     }
 
-    public String getInviteUrl() {
-        return inviteUrl;
+    public String getUUID() {
+        return UUID;
     }
 
     public void setUserId(int userId) {
@@ -68,7 +68,7 @@ public class Event {
         this.decisionDate = decisionDate;
     }
 
-    public void setInviteUrl(String inviteUrl) {
-        this.inviteUrl = inviteUrl;
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
     }
 }

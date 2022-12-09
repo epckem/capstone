@@ -59,11 +59,6 @@ export default {
     restaurants() {
       return this.$store.state.restaurants;
     },
-    // filteredList() {
-    //   return this.restaurants.filter((restaurant) =>
-    //     restaurant.includes(this.input.toLowerCase())
-    //   );
-    // },
   },
   methods: {
     retrieveRestaurants(search) {
@@ -77,11 +72,6 @@ export default {
         }
       });
     },
-    // noSearchResults() {
-    //   if (this.retrieveRestaurants.length() > 0) {
-    //     this.showMessage = true;
-    //   }
-    // },
   },
 };
 </script>

@@ -10,6 +10,6 @@ public interface EventDao {
 
     List<Event> getEventsById(int id);
 
-    Event createEvent(String eventName, String location, Timestamp decisionDate);
+    void createEvent(Event event);
 
 }
