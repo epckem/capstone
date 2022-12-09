@@ -40,14 +40,14 @@ public class JdbcEventDao implements EventDao{
     }
 
 
-   @Override
-   public boolean createEvent(int userId, String eventName, String location, LocalDateTime decisionDate, String inviteUrl) {
-       final String sql = "INSERT INTO events(\n" +
-               "\tuser_id, eventname, location, decisiondate, inviteurl)\n" +
-               "\tVALUES (?, ?, ?, ?, ?);";
-       Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, even)
-       return false;
-   }
+//   @Override
+//   public boolean createEvent(int userId, String eventName, String location, LocalDateTime decisionDate, String inviteUrl) {
+//       final String sql = "INSERT INTO events(\n" +
+//               "\tuser_id, eventname, location, decisiondate, inviteurl)\n" +
+//               "\tVALUES (?, ?, ?, ?, ?);";
+//       Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, even)
+//       return false;
+//   }
 
    private Event mapRowToEvent(SqlRowSet rowSet) {
        Event event = new Event();
