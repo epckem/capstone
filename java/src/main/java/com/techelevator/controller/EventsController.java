@@ -36,7 +36,9 @@ public class EventsController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/events")
-    public Event addEvent( @RequestBody Event event) {
+    public Event addEvent(Principal principal, @RequestBody Event event) {
+        User user = userDao.findByUsername(principal.getName());
+        event.setUserId(user.getId());
         event.setUUID(UUID.randomUUID().toString());
         this.eventDao.createEvent(event);
 
