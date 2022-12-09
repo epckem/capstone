@@ -2,6 +2,7 @@
   <div class="restaurant">
     <div id="img-container">
       <img
+        id="pointer"
         @click="viewRestaurantDetails(restaurant.restaurant_id)"
         v-bind:src="restaurant.img"
       />
@@ -16,7 +17,7 @@
       </div>
     </div>
     <div id="restaurant-info">
-      <h1 @click="viewRestaurantDetails(restaurant.restaurant_id)">
+      <h1 id="pointer" @click="viewRestaurantDetails(restaurant.restaurant_id)">
         {{ restaurant.name }}
       </h1>
       <h3>
@@ -100,5 +101,9 @@ div.main div.restaurant h3 {
 /* div.main div.restaurant h1 {
   font-size: 1rem;
 } */
+
+#pointer {
+  cursor: -webkit-grab;
+}
 </style>
 
