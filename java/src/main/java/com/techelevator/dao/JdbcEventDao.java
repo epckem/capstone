@@ -32,9 +32,11 @@ public class JdbcEventDao implements EventDao{
     }
 
     @Override
-    public List<Event> getEventsById(int id) {
+    public List<Event> getEventsByUser(int id) {
 
-        final String sql = "SELECT users.user_id, eventName, location, decisionDate, inviteCode FROM events JOIN users ON events.user_id = users.user_id WHERE users.user_id = ?;";
+        final String sql = "SELECT event_id, user_id, eventName, location, decisionDate, inviteCode \n" +
+                "FROM events \n" +
+                "WHERE user_id = (SELECT user_id FROM users WHERE user_id = ?);";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, id);
         final List<Event> events = new ArrayList<>();
         while (results.next()) {

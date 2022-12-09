@@ -44,6 +44,19 @@ public class JdbcRestaurantsDao implements RestaurantDao {
         return restaurants;
     }
 
+    @Override
+    public Restaurant getRestaurant(int restaurant_id) {
+        Restaurant restaurant = null;
+        final String sql = "SELECT restaurant_id, img, name, description, type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
+                "FROM restaurants \n" +
+                "WHERE restaurant_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurant_id);
+        if (results.next()) {
+            restaurant = mapRowToRestaurant(results);
+        }
+        return restaurant;
+    }
+
 
     private Restaurant mapRowToRestaurant(SqlRowSet rowSet) {
         Restaurant restaurant = new Restaurant();

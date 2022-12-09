@@ -15,15 +15,20 @@ public class RestaurantsController {
 
     RestaurantsController(RestaurantDao restaurantDao){this.restaurantDao = restaurantDao;}
 
-//    @ResponseStatus(HttpStatus.OK)
-//    @GetMapping("/restaurants")
-//    public List<Restaurant> getAll(){return  this.restaurantDao.getRestaurants();}
-
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/restaurants")
     public List<Restaurant> filteredBy(@RequestParam(defaultValue = "") String zipcode,
                                        @RequestParam(defaultValue = "") String city) {
         return this.restaurantDao.filteredRestaurants(zipcode, city);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/restaurants/{id}")
+    public Restaurant getRestaurant(@PathVariable int id) {
+        return this.restaurantDao.getRestaurant(id);
+    }
+
+
 
 
 

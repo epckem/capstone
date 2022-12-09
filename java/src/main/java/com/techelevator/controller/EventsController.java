@@ -28,10 +28,10 @@ public class EventsController {
     }
 
     @GetMapping("/events")
-    public List<Event> getEventsById(Principal principal) {
+    public List<Event> getEventsByUser(Principal principal) {
         User user = userDao.findByUsername(principal.getName());
         int id = user.getId();
-        return this.eventDao.getEventsById(id);
+        return this.eventDao.getEventsByUser(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

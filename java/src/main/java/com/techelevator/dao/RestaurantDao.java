@@ -7,4 +7,5 @@ import java.util.List;
 public interface RestaurantDao {
     List<Restaurant> getRestaurants();
     List<Restaurant> filteredRestaurants(String zipcode, String city);
+    Restaurant getRestaurant(int restaurant_id);
 }
