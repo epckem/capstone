@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.UUID;
 
 @PreAuthorize("isAuthenticated()")
 @CrossOrigin
@@ -36,7 +37,7 @@ public class EventsController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/events")
     public Event addEvent( @RequestBody Event event) {
-
+        event.setUUID(UUID.randomUUID().toString());
         this.eventDao.createEvent(event);
 
         return event;
