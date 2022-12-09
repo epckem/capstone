@@ -9,7 +9,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -43,5 +42,10 @@ public class EventsController {
         return this.eventDao.createEvent(event);
 
     }
+
+    @GetMapping("/events/{id}")
+    public Event getEventByEventId(@PathVariable int event_id) {
+        return this.eventDao.getEvent(event_id);
+    } //TODO: Check path variable
 
 }
