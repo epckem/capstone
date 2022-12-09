@@ -4,6 +4,7 @@ import com.techelevator.dao.EventDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
 import com.techelevator.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class EventsController {
         return this.eventDao.getEventsById(id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/events")
     public Event addEvent( @RequestBody Event event) {
 
@@ -39,6 +41,5 @@ public class EventsController {
 
         return event;
     }
-    //TODO: link???
 
 }
