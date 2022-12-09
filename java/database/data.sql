@@ -32,6 +32,6 @@ INSERT INTO restaurants(img, name, description, type, address, city, state_abbre
     VALUES ('https://s3-media0.fl.yelpcdn.com/bphoto/0VMoWjd9bZC7JDalZ0uJmg/o.jpg', 'Agave & Rye - Covington', 'We believe food is an adventure, taking you somewhere playful with every bite. We have made it our promise to deliver a chef inspired take on the standard taco. Elevating this simple food into something Epic. If you enjoy creative delicious food, and an endless selection of Bourbon, Tequila and Craft Cocktails, we promise Agave & Rye is the place for you.', 'Mexican', '635 Madison Ave', 'Covington', 'KY', '41011', '11:00:00', '23:00:00', '4.0', '(859) 360-1060');
 INSERT INTO restaurants(img, name, description, type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone)
     VALUES ('https://s3-media0.fl.yelpcdn.com/bphoto/vKoQc0UJrhwea9b8jGJ9PA/o.jpg', 'MadTree Brewing', 'raft beer and excellent food from Catch-A-Fire Café. The large outdoor beer garden provide great space with an additional bar so you can soak in the outdoors and hang out with your pets. Boasts two private event spaces and venues for parties small to large.', 'Brewery', '3301 Madison Rd', 'Cincinnati', 'OH', '45209', '11:00:00', '23:00:00', '4.5', '(513) 836-8733');
-INSERT INTO events(user_id, eventname, location, decisiondate, inviteurl)
+INSERT INTO events(user_id, eventname, location, decisiondate, uuid)
 	VALUES (1, 'Saturday Dinner', '45202', '2022-12-10 10:00:00', 'testURL');
 COMMIT TRANSACTION;

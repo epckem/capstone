@@ -22,7 +22,7 @@ public class JdbcEventDao implements EventDao{
     @Override
     public List<Event> getEventsById(int id) {
 
-        final String sql = "SELECT users.user_id, eventname, location, decisiondate, inviteurl FROM events JOIN users ON events.user_id = users.user_id WHERE users.user_id = ?;";
+        final String sql = "SELECT users.user_id, eventname, location, decisiondate, uuid FROM events JOIN users ON events.user_id = users.user_id WHERE users.user_id = ?;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, id);
         final List<Event> events = new ArrayList<>();
         while (results.next()) {
@@ -61,7 +61,7 @@ public class JdbcEventDao implements EventDao{
        event.setEventName(rowSet.getString("eventname"));
        event.setLocation(rowSet.getString("location"));
        event.setDecisionDate(rowSet.getTimestamp("decisiondate"));
-       event.setInviteUrl(rowSet.getString("inviteurl"));
+       event.setUUID(rowSet.getString("uuid"));
 
        return event;
    }
