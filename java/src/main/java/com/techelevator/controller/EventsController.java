@@ -5,23 +5,19 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
 import com.techelevator.model.User;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.security.Timestamp;
 import java.util.List;
 
-//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 @CrossOrigin
 @RestController
 public class EventsController {
 
     private UserDao userDao;
     private EventDao eventDao;
-
-//    public EventsController(){}
 
 
     public EventsController(EventDao eventDao, UserDao userDao) {
@@ -35,5 +31,11 @@ public class EventsController {
         id = user.getId();
         return this.eventDao.getEventsById(id);
     }
+
+    @PostMapping("/events")
+    public void addEvent(@RequestParam String eventName, @RequestParam String location, @RequestParam Timestamp decisionDate) {
+        eventDao.createEvent(eventName, location, decisionDate);
+    }
+    //TODO: link???
 
 }
