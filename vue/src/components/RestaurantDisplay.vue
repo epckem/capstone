@@ -103,7 +103,7 @@ div.main div.restaurant h3 {
 } */
 
 #pointer {
-  cursor: -webkit-grab;
+  cursor: pointer;
 }
 </style>
 
