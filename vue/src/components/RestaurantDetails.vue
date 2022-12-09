@@ -1,7 +1,6 @@
 <template>
   <div class="details">
-    <h3>Restaurant</h3>
-    <div>
+    <!-- <div>
       <img
         src="https://i.pinimg.com/originals/6d/00/9e/6d009e1b243cc054596b94082499e2ce.png"
         class="ratingStar"
@@ -18,13 +17,34 @@
       <p>123 Main Street, Cincinnati, OH 45212</p>
       <p>M-F: 11am-11pm</p>
       <span>Open</span>
-    </div>
+    </div> -->
+
+    <h1>{{ restaurant.name }}</h1>
   </div>
 </template>
 
 <script>
-export default {};
+import RestaurantService from "../services/RestaurantService";
+
+export default {
+  name: "restaurant-details",
+
+  data() {
+    return {
+      restaurant: {},
+    };
+  },
+  created() {
+    const id = parseInt(this.$route.params.id);
+    RestaurantService.getRestaurant(id).then((restaurant) => {
+      this.restaurant = restaurant.data;
+    });
+  },
+};
 </script>
 
-<style>
+<style scoped>
+h1 {
+  font-size: 200px;
+}
 </style>

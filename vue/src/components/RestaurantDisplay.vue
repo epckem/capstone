@@ -1,7 +1,10 @@
 <template>
   <div class="restaurant">
     <div id="img-container">
-      <img v-bind:src="restaurant.img" />
+      <img
+        @click="viewRestaurantDetails(restaurant.restaurant_id)"
+        v-bind:src="restaurant.img"
+      />
       <div class="rating">
         <img
           src="../assets/star.png"
@@ -13,7 +16,9 @@
       </div>
     </div>
     <div id="restaurant-info">
-      <h1>{{ restaurant.name }}</h1>
+      <h1 @click="viewRestaurantDetails(restaurant.restaurant_id)">
+        {{ restaurant.name }}
+      </h1>
       <h3>
         {{ restaurant.address }} {{ restaurant.city }}, {{ restaurant.state }} -
         {{ restaurant.zipcode }}
@@ -46,6 +51,9 @@ export default {
   methods: {
     convertTime(time) {
       return moment(time, "HH:mm:ss").format("h:mm A");
+    },
+    viewRestaurantDetails(id) {
+      this.$router.push(`/restaurants/${id}`);
     },
   },
 };

@@ -20,6 +20,7 @@
     <div class="item error" v-if="input && !filteredList.length">
       <p>No results found!</p>
     </div> -->
+
     <restaurant-display
       class="restaurant"
       v-for="restaurant in restaurants"

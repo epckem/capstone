@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Restaurants from '../views/Restaurants.vue'
 import InviteView from '../views/InviteView.vue'
+import RestaurantDetails from '../views/RestaurantDetailsPage.vue'
 
 Vue.use(Router)
 
@@ -69,6 +70,14 @@ const router = new Router({
       path: "/invite",
       name: "InviteView",
       component: InviteView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/restaurants/:id',
+      name: 'restaurantDetails',
+      component: RestaurantDetails,
       meta: {
         requiresAuth: true
       }
