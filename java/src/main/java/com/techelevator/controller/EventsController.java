@@ -43,9 +43,10 @@ public class EventsController {
 
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/events/{id}")
-    public Event getEventByEventId(@PathVariable int event_id) {
-        return this.eventDao.getEvent(event_id);
+    public Event getEventByEventId(@PathVariable int id) {
+        return this.eventDao.getEvent(id);
     } //TODO: Check path variable
 
 }
