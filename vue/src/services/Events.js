@@ -6,7 +6,7 @@ export default {
         return http.get("/events")
     },
 
-    getEvent() {
-        return http.get("/events/id")
+    getEvent(id) {
+        return http.get(`/events/${id}`)
     }
 }
