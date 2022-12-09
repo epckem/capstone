@@ -5,8 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import java.security.Timestamp;
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +19,22 @@ public class JdbcEventDao implements EventDao{
     }
 
     @Override
+    public Event getEvent(int event_id) {
+        Event event = null;
+        String sql = "SELECT event_id, user_id, eventName, location, decisionDate, inviteCode\n" +
+                "FROM events\n" +
+                "WHERE event_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, event_id);
+        if (results.next()) {
+            event = mapRowToEvent(results);
+        }
+        return event;
+    }
+
+    @Override
     public List<Event> getEventsById(int id) {
 
-        final String sql = "SELECT users.user_id, eventname, location, decisiondate, uuid FROM events JOIN users ON events.user_id = users.user_id WHERE users.user_id = ?;";
+        final String sql = "SELECT users.user_id, eventName, location, decisionDate, inviteCode FROM events JOIN users ON events.user_id = users.user_id WHERE users.user_id = ?;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, id);
         final List<Event> events = new ArrayList<>();
         while (results.next()) {
@@ -32,35 +44,27 @@ public class JdbcEventDao implements EventDao{
     }
 
     @Override
-    public void createEvent(Event event) {
-        final String sql = "INSERT INTO events(\n" +
-                "\teventname, location, decisiondate)\n" +
-                "\tVALUES (?, ?, ?, ?);";
-        jdbcTemplate.update(sql,
+    public Event createEvent(Event event) {
+        final String sql = "INSERT INTO events (user_id, eventName, location, decisionDate, inviteCode) \n" +
+                "VALUES (?, ?, ?, ?, ?) RETURNING event_id;";
+        Integer event_id =  jdbcTemplate.queryForObject(sql,
                 Integer.class,
+                event.getUserId(),
                 event.getEventName(),
                 event.getLocation(),
-                event.getDecisionDate());
-
+                event.getDecisionDate(),
+                event.getInviteCode());
+        return getEvent(event_id);
     }
-
-
-//   @Override
-//   public boolean createEvent(int userId, String eventName, String location, LocalDateTime decisionDate, String inviteUrl) {
-//       final String sql = "INSERT INTO events(\n" +
-//               "\tuser_id, eventname, location, decisiondate, inviteurl)\n" +
-//               "\tVALUES (?, ?, ?, ?, ?);";
-//       Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, even)
-//       return false;
-//   }
 
    private Event mapRowToEvent(SqlRowSet rowSet) {
        Event event = new Event();
+       event.setEventId(rowSet.getInt("event_id"));
        event.setUserId(rowSet.getInt("user_id"));
-       event.setEventName(rowSet.getString("eventname"));
+       event.setEventName(rowSet.getString("eventName"));
        event.setLocation(rowSet.getString("location"));
-       event.setDecisionDate(rowSet.getTimestamp("decisiondate"));
-       event.setUUID(rowSet.getString("uuid"));
+       event.setDecisionDate(rowSet.getTimestamp("decisionDate"));
+       event.setInviteCode(rowSet.getString("inviteCode"));
 
        return event;
    }

@@ -10,6 +10,7 @@ public interface EventDao {
 
     List<Event> getEventsById(int id);
 
-    void createEvent(Event event);
+    Event createEvent(Event event);
 
+    Event getEvent(int event_id);
 }
