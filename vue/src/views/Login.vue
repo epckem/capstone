@@ -96,6 +96,9 @@ body.login {
   background-image: url("https://iili.io/HCPiZ3F.jpg");
   background-size: cover;
 }
+body {
+  font-family: "poppins";
+}
 </style>
 
 <style scoped >

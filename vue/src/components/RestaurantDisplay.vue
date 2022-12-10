@@ -1,12 +1,13 @@
 <template>
-  <div class="restaurant">
-    <div id="img-container">
+  <div class="restaurant" id="main-grid">
+    <div id="img-container" class="img-container">
       <img
+        class="list-images"
         id="pointer"
         @click="viewRestaurantDetails(restaurant.restaurant_id)"
         v-bind:src="restaurant.img"
       />
-      <div class="rating">
+      <div class="rating" id="second-grid">
         <img
           src="../assets/star.png"
           v-bind:title="restaurant.rating + ' Star Review'"
@@ -16,8 +17,12 @@
         />
       </div>
     </div>
-    <div id="restaurant-info">
-      <h1 id="pointer" @click="viewRestaurantDetails(restaurant.restaurant_id)">
+    <div id="restaurant-info" class="info-container">
+      <h1
+        class="restaurant-name"
+        id="pointer"
+        @click="viewRestaurantDetails(restaurant.restaurant_id)"
+      >
         {{ restaurant.name }}
       </h1>
       <h3>
@@ -61,6 +66,27 @@ export default {
 </script>
 
 <style>
+#main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  grid-template-areas: "img-container   info-container";
+}
+.img-container {
+  grid-area: img-container;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info-container {
+  grid-area: info-container;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 div.main div.restaurant {
   display: flex;
   align-items: center;
@@ -74,6 +100,7 @@ div.main div.restaurant {
   margin-right: 20rem;
   margin-left: 20rem;
   margin-top: 1rem;
+  width: 1000px;
 }
 
 /* div.main div.restaurant {
@@ -104,6 +131,20 @@ div.main div.restaurant h3 {
 
 #pointer {
   cursor: pointer;
+}
+.list-images {
+  max-width: 300px;
+  max-height: 300px;
+  min-width: 300px;
+  min-height: 300px;
+}
+#img-container {
+  display: flex;
+  position: relative;
+  left: 30px;
+}
+.restaurant-name {
+  max-width: 300px;
 }
 </style>
 
