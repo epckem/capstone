@@ -154,9 +154,10 @@ body {
   grid-area: submit-btn;
   font-family: "Times New Roman", Times, serif;
   font-size: 20px;
-  height: 27px;
+  height: 34px;
   width: 440px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 #register {
   grid-area: register;

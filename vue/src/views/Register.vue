@@ -104,6 +104,10 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  font-family: "Poppins";
+}
 body.login {
   background-image: url("https://iili.io/HCPiZ3F.jpg");
   background-size: cover;
@@ -153,7 +157,7 @@ body.login {
 
 #username {
   grid-area: username;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Poppins", Times, serif;
 }
 #password {
   grid-area: password;
@@ -166,6 +170,7 @@ body.login {
 #submit-btn {
   grid-area: submit-btn;
   font-family: "Times New Roman", Times, serif;
+  margin-top: 20px;
   font-size: 20px;
   height: 27px;
 }
