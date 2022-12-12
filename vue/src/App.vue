@@ -3,15 +3,18 @@
     <div id="nav" v-if="$store.state.token != ''">
       <router-link class="nav-btns" v-bind:to="{ name: 'home' }"
         >Home</router-link
-      >&nbsp;|&nbsp;
+      >
+      <div id="nav-lines">&nbsp;|&nbsp;</div>
       <router-link class="nav-btns" v-bind:to="{ name: 'InviteView' }"
         >Invite</router-link
       >
-      &nbsp;|&nbsp;
+      <div id="nav-lines">&nbsp;|&nbsp;</div>
+
       <router-link class="nav-btns" v-bind:to="{ name: 'restaurants' }"
         >Restaurants</router-link
       >
-      &nbsp;|&nbsp;
+      <div id="nav-lines">&nbsp;|&nbsp;</div>
+
       <router-link id="list" class="nav-btns" v-bind:to="{ name: 'logout' }"
         >Logout</router-link
       >
@@ -24,5 +27,13 @@
   color: white;
   text-decoration: none;
   font-size: x-large;
+}
+#nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#nav-lines {
+  color: white;
 }
 </style>
