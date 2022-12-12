@@ -76,7 +76,7 @@ export default {
     timeStatus() {
         let time = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
         if(this.restaurant.open < time  < this.restaurant.close) {
-          return null;
+          return time;
         }
       },
   },
