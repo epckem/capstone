@@ -1,5 +1,9 @@
 <template>
-  <div class="restaurant" id="main-grid">
+  <div
+    class="restaurant"
+    id="main-grid"
+    @click="viewRestaurantDetails(restaurant.restaurant_id)"
+  >
     <div id="img-container" class="img-container">
       <img
         class="list-images"
@@ -30,8 +34,9 @@
         {{ restaurant.zipcode }}
       </h3>
       <p>
-        {{ convertTime(restaurant.open) }} - {{ convertTime(restaurant.close) }}
-        <span v-if="isOpen">OPEN</span><span v-else>CLOSED</span>
+        {{ convertTime(restaurant.open) }} -
+        {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
+        ><span v-else>CLOSED</span>
       </p>
       <!-- <p>
       Favorite?
@@ -60,7 +65,7 @@ export default {
   //   },
   methods: {
     convertTime(time) {
-      const now =moment(time, "HH:mm:ss");
+      const now = moment(time, "HH:mm:ss");
       return now.format("h:mm A");
     },
     viewRestaurantDetails(id) {
@@ -73,8 +78,8 @@ export default {
       const closed = moment(this.restaurant.closed);
       const now = moment();
       return now.isAfter(open) && now.isBefore(closed);
-    }
-  }
+    },
+  },
 };
 </script>
 

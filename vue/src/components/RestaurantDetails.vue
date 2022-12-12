@@ -184,5 +184,7 @@ h1 {
 #map {
   width: 300px;
   height: 300px;
+  margin-left: 40px;
+  margin-top: 70px;
 }
 </style>
