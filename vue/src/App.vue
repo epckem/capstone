@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <img
+      id="logo"
+      src="https://iili.io/HofP3Rs.png"
+      alt="table for a few low resolution logo color on transparent background"
+      border="0"
+    />
     <div id="nav" v-if="$store.state.token != ''">
       <router-link class="nav-btns" v-bind:to="{ name: 'home' }"
         >Home</router-link
@@ -19,6 +25,7 @@
         >Logout</router-link
       >
     </div>
+
     <router-view />
   </div>
 </template>
@@ -35,5 +42,9 @@
 }
 #nav-lines {
   color: white;
+}
+#logo {
+  width: 300px;
+  float: right;
 }
 </style>

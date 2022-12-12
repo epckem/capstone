@@ -3,6 +3,7 @@
     <h1 id="title-restaurants">Restaurants</h1>
     <div class="search-filter">
       <input
+        id="search-bar"
         type="text"
         v-model="searchTerm"
         placeholder="Search by ZipCode or City"

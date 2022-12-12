@@ -24,7 +24,7 @@ body.restaurants {
   background-color: #01949a;
 }
 
-input {
+#search-bar {
   display: block;
   width: 350px;
   margin: 20px auto;
