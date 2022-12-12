@@ -92,13 +92,15 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   grid-template-areas:
-    ".            rest-name           ."
+    "rest-name            rest-name           rest-name"
     "rest-images  rest-images rest-images"
     "second-grid  second-grid second-grid";
 }
 #rest-name {
   grid-area: rest-name;
   font-size: 50px;
+  display: flex;
+  justify-content: center;
 }
 #rest-images {
   grid-area: rest-images;
