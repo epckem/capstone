@@ -75,7 +75,7 @@ export default {
 .img-container {
   grid-area: img-container;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -101,6 +101,7 @@ div.main div.restaurant {
   margin-left: 20rem;
   margin-top: 1rem;
   width: 1000px;
+  height: 350px;
 }
 
 /* div.main div.restaurant {
@@ -145,6 +146,9 @@ div.main div.restaurant h3 {
 }
 .restaurant-name {
   max-width: 300px;
+}
+.rating {
+  padding-top: 10px;
 }
 </style>
 
