@@ -1,10 +1,14 @@
 <template>
   <div class="main">
-    <restaurant-list></restaurant-list>
+    <h1 id="title-restaurants">Restaurants</h1>
+    <search-bar @change="retrieveRestaurants"></search-bar>
+    <restaurant-list :restaurants="restaurants"></restaurant-list>
   </div>
 </template>
 
 <script>
+import SearchBar from "../components/SearchBar.vue";
+import RestaurantService from "../services/RestaurantService";
 import RestaurantList from "../components/RestaurantsList.vue";
 
 export default {
@@ -14,11 +18,37 @@ export default {
   name: "restaurants",
   components: {
     RestaurantList,
+    SearchBar,
+  },
+  created() {
+    this.retrieveRestaurants();
+    // TODO .catch()
+  },
+  computed: {
+    restaurants() {
+      return this.$store.state.restaurants;
+    },
+  },
+  methods: {
+    retrieveRestaurants(search) {
+      RestaurantService.getRestaurants(search, search).then((response) => {
+        this.$store.commit("SET_RESTAURANTS", response.data);
+      });
+    },
   },
 };
 </script>
 
 <style>
+#title-restaurants {
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #db1f48;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
+
 body.restaurants {
   background-image: none;
   background-color: #01949a;

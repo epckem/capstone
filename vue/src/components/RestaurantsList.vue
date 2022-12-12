@@ -1,16 +1,6 @@
 <template>
   <div class="restaurants">
-    <h1 id="title-restaurants">Restaurants</h1>
-    <div class="search-filter">
-      <input
-        type="text"
-        v-model="searchTerm"
-        placeholder="Search by ZipCode or City"
-        v-on:keyup.enter="retrieveRestaurants(searchTerm)"
-      />
-    </div>
-
-    <h1 v-if="showMessage">Sorry no search results found. Try again!</h1>
+    <h1 v-if="!hasData">Sorry no search results found. Try again!</h1>
 
     <!-- <div
       class="search filter"
@@ -37,42 +27,22 @@
 </template>
 
 <script>
-import RestaurantService from "../services/RestaurantService";
+// import RestaurantService from "../services/RestaurantService";
 import RestaurantDisplay from "./RestaurantDisplay";
 export default {
   name: "restaurant-list",
+  props: ["restaurants"],
   data() {
     return {
       searchTerm: "",
       isLoading: false,
-      showMessage: false,
     };
   },
   components: {
     RestaurantDisplay,
   },
-  created() {
-    this.retrieveRestaurants();
-    this.noSearchResults();
-    // TODO .catch()
-  },
-  computed: {
-    restaurants() {
-      return this.$store.state.restaurants;
-    },
-  },
+
   methods: {
-    retrieveRestaurants(search) {
-      RestaurantService.getRestaurants(search, search).then((response) => {
-        this.$store.commit("SET_RESTAURANTS", response.data);
-        this.searchTerm = "";
-        if (response.data.length === 0) {
-          this.showMessage = true;
-        } else {
-          this.showMessage = false;
-        }
-      });
-    },
     timeStatus() {
       let time = new Date().toLocaleTimeString([], {
         hour: "2-digit",
@@ -83,19 +53,15 @@ export default {
       }
     },
   },
+  computed: {
+    hasData() {
+      return this.restaurants.length != 0;
+    },
+  },
 };
 </script>
 
 <style scoped>
-#title-restaurants {
-  color: white;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #db1f48;
-  font-size: 50px;
-  display: flex;
-  justify-content: center;
-}
-
 div.main {
   margin: 1rem 0;
 }

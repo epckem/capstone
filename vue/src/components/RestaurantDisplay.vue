@@ -30,8 +30,9 @@
         {{ restaurant.zipcode }}
       </h3>
       <p>
-        {{ convertTime(restaurant.open) }} - {{ convertTime(restaurant.close) }}
-        <span v-if="isOpen">OPEN</span><span v-else>CLOSED</span>
+        {{ convertTime(restaurant.open) }} -
+        {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
+        ><span v-else>CLOSED</span>
       </p>
       <!-- <p>
       Favorite?
@@ -60,7 +61,7 @@ export default {
   //   },
   methods: {
     convertTime(time) {
-      const now =moment(time, "HH:mm:ss");
+      const now = moment(time, "HH:mm:ss");
       return now.format("h:mm A");
     },
     viewRestaurantDetails(id) {
@@ -69,12 +70,12 @@ export default {
   },
   computed: {
     isOpen() {
-      const open = moment(this.restaurant.open);
-      const closed = moment(this.restaurant.closed);
+      const open = moment(this.restaurant.open, "HH:mm:ss");
+      const closed = moment(this.restaurant.close, "HH:mm:ss");
       const now = moment();
       return now.isAfter(open) && now.isBefore(closed);
-    }
-  }
+    },
+  },
 };
 </script>
 
