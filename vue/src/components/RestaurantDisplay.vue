@@ -84,9 +84,10 @@ body {
   font-family: "Poppins";
 }
 body.display {
-  background-image: url("https://iili.io/HCPiZ3F.jpg");
+  background-image: url("https://iili.io/HoKnma1.webp");
   background-attachment: fixed;
   background-size: cover;
+  background-position: 30%;
 }
 
 #main-grid {
@@ -125,6 +126,7 @@ div.main div.restaurant {
   margin-top: 1rem;
   width: 900px;
   height: 350px;
+  border: 3px solid black;
 }
 
 /* div.main div.restaurant {

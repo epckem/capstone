@@ -1,6 +1,6 @@
 <template>
   <div class="restaurants">
-    <h1>Restaurants</h1>
+    <h1 id="title-restaurants">Restaurants</h1>
     <div class="search-filter">
       <input
         type="text"
@@ -74,16 +74,28 @@ export default {
       });
     },
     timeStatus() {
-        let time = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-        if(this.restaurant.open < time  < this.restaurant.close) {
-          return time;
-        }
-      },
+      let time = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      if (this.restaurant.open < time < this.restaurant.close) {
+        return null;
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
+#title-restaurants {
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #db1f48;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
+
 div.main {
   margin: 1rem 0;
 }
