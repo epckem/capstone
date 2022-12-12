@@ -47,6 +47,9 @@
 <script>
 import moment from "moment";
 export default {
+  beforeCreate() {
+    document.body.className = "display";
+  },
   name: "restaurant-display",
   props: ["restaurant"],
   //   methods: {
@@ -66,6 +69,12 @@ export default {
 </script>
 
 <style>
+body.display {
+  background-image: url("https://iili.io/HCPiZ3F.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 #main-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,7 +109,7 @@ div.main div.restaurant {
   margin-right: 20rem;
   margin-left: 20rem;
   margin-top: 1rem;
-  width: 1000px;
+  width: 900px;
   height: 350px;
 }
 
