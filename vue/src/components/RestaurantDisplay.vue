@@ -31,6 +31,7 @@
       </h3>
       <p>
         {{ convertTime(restaurant.open) }} - {{ convertTime(restaurant.close) }}
+        <span v-if="isOpen">OPEN</span><span v-else>CLOSED</span>
       </p>
       <!-- <p>
       Favorite?
@@ -59,12 +60,21 @@ export default {
   //   },
   methods: {
     convertTime(time) {
-      return moment(time, "HH:mm:ss").format("h:mm A");
+      const now =moment(time, "HH:mm:ss");
+      return now.format("h:mm A");
     },
     viewRestaurantDetails(id) {
       this.$router.push(`/restaurants/${id}`);
     },
   },
+  computed: {
+    isOpen() {
+      const open = moment(this.restaurant.open);
+      const closed = moment(this.restaurant.closed);
+      const now = moment();
+      return now.isAfter(open) && now.isBefore(closed);
+    }
+  }
 };
 </script>
 

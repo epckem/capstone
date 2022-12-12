@@ -38,7 +38,13 @@
           v-model="event.date"
           required
         />
-        <button id="generate-btn" type="submit">Generate Link!</button>
+        <button
+          id="generate-btn"
+          type="submit"
+          v-on:submit.prevent="createEvent"
+        >
+          Generate Link!
+        </button>
         <p id="generatedLink">Invitation Link:</p>
       </div>
     </form>
@@ -46,9 +52,9 @@
 </template>
 
 <script>
-import InviteService from "../services/InviteService";
+import EventService from "../services/EventService";
 export default {
-  name: "Invite",
+  name: "InviteForm",
   components: {},
   data() {
     return {
@@ -62,7 +68,7 @@ export default {
   },
   methods: {
     createEvent() {
-      InviteService.addEvent(this.event)
+      EventService.addEvent(this.event)
         .then((response) => {
           if (response.status == 201) {
             this.event = {

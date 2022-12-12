@@ -1,16 +1,16 @@
 <template>
-  <Invite></Invite>
+  <invite-form></invite-form>
 </template>
 
 <script>
-import Invite from "../components/Invite.vue";
+import InviteForm from "../components/InviteForm.vue";
 export default {
   beforeCreate() {
     document.body.className = "invite";
   },
   name: "InviteView",
   components: {
-    Invite,
+    InviteForm,
   },
 };
 </script>

@@ -5,7 +5,7 @@
         >Home</router-link
       >
       <div id="nav-lines">&nbsp;|&nbsp;</div>
-      <router-link class="nav-btns" v-bind:to="{ name: 'InviteView' }"
+      <router-link class="nav-btns" v-bind:to="{ name: 'CreateEvent' }"
         >Invite</router-link
       >
       <div id="nav-lines">&nbsp;|&nbsp;</div>
