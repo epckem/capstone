@@ -2,15 +2,6 @@
   <div class="restaurants">
     <h1 v-if="!hasData">Sorry no search results found. Try again!</h1>
 
-    <!-- <div
-      class="search filter"
-      v-for="restaurant in filteredList"
-      :key="restaurant"
-    ></div>
-    <div class="item error" v-if="input && !filteredList.length">
-      <p>No results found!</p>
-    </div> -->
-
     <restaurant-display
       class="restaurant"
       v-for="restaurant in restaurants"

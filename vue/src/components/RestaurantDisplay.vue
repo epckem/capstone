@@ -1,5 +1,9 @@
 <template>
-  <div class="restaurant" id="main-grid">
+  <div
+    class="restaurant"
+    id="main-grid"
+    @click="viewRestaurantDetails(restaurant.restaurant_id)"
+  >
     <div id="img-container" class="img-container">
       <img
         class="list-images"
@@ -34,14 +38,6 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-      <!-- <p>
-      Favorite?
-      <input
-        type="checkbox"
-        v-bind:checked="restaurant.favorited"
-        v-on:change="onFavoritedChange(restaurant)"
-      />
-    </p> -->
     </div>
   </div>
 </template>
@@ -54,11 +50,6 @@ export default {
   },
   name: "restaurant-display",
   props: ["restaurant"],
-  //   methods: {
-  //     onFavoritedChange(restaurant) {
-  //       this.$store.commit("FLIP_FAVORITED", restaurant);
-  //     },
-  //   },
   methods: {
     convertTime(time) {
       const now = moment(time, "HH:mm:ss");

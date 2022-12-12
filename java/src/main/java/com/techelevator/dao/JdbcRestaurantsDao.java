@@ -21,7 +21,7 @@ public class JdbcRestaurantsDao implements RestaurantDao {
     @Override
     public List<Restaurant> getRestaurants() {
 
-        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
+        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
                 "FROM restaurants;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql);
         final List<Restaurant> restaurants = new ArrayList<>();
@@ -33,7 +33,7 @@ public class JdbcRestaurantsDao implements RestaurantDao {
 
     @Override
     public List<Restaurant> filteredRestaurants(String zipcode, String city) {
-        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
+        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
                 "FROM restaurants\n" +
                 "WHERE zip_code ILIKE ? OR city ILIKE  ?;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, '%' + zipcode + '%', '%' + city + '%');
@@ -47,7 +47,7 @@ public class JdbcRestaurantsDao implements RestaurantDao {
     @Override
     public Restaurant getRestaurant(int restaurant_id) {
         Restaurant restaurant = null;
-        final String sql = "SELECT restaurant_id, img, name, description, type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone\n" +
+        final String sql = "SELECT restaurant_id, img, name, description, type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
                 "FROM restaurants \n" +
                 "WHERE restaurant_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, restaurant_id);
@@ -73,6 +73,11 @@ public class JdbcRestaurantsDao implements RestaurantDao {
         restaurant.setClose(rowSet.getTime("close_time").toLocalTime());
         restaurant.setRating(rowSet.getDouble("rating"));
         restaurant.setPhoneNumber(rowSet.getString("phone"));
+        restaurant.setImg2(rowSet.getString("img2"));
+        restaurant.setImg3(rowSet.getString("img3"));;
+        restaurant.setMapimg(rowSet.getString("mapimg"));
+
+
 
         return restaurant;
     }

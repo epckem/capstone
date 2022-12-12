@@ -1,6 +1,6 @@
 <template>
-  <div id="main-grid">
-    <form>
+  <div id="main-grid1">
+    <form1>
       <div id="heading">
         <h1>Create an Event</h1>
         <h3>Let's get this party started!</h3>
@@ -12,7 +12,7 @@
         <input
           type="text"
           id="event-input"
-          class="form-control"
+          class="form2-control"
           placeholder="Event Name"
           v-model="event.eventName"
           required
@@ -24,7 +24,7 @@
         <input
           type="text"
           id="location-input"
-          class="form-control"
+          class="form2-control"
           placeholder="Location"
           v-model="event.location"
           required
@@ -33,7 +33,7 @@
         <input
           type="datetime-local"
           id="date-input"
-          class="form-control"
+          class="form2-control"
           placeholder="Date/Time"
           v-model="event.date"
           required
@@ -47,13 +47,16 @@
         </button>
         <p id="generatedLink">Invitation Link:</p>
       </div>
-    </form>
+    </form1>
   </div>
 </template>
 
 <script>
 import EventService from "../services/EventService";
 export default {
+  beforeCreate() {
+    document.body.className = "invite-img";
+  },
   name: "InviteForm",
   components: {},
   data() {
@@ -98,16 +101,27 @@ export default {
 };
 </script>
 
-<style scoped>
-#main-grid {
+<style >
+body.invite-img {
+  background-image: url("https://iili.io/HoKnma1.webp");
+  background-size: cover;
+  background-position: 30%;
+}
+
+#main-grid1 {
   display: grid;
 
   grid-template-columns: 1fr 1fr 1fr;
 
   column-gap: 50px;
   grid-template-areas: ".  main-grid   .";
+  background-color: white;
+  margin-left: 400px;
+  margin-right: 400px;
+  border: 3px solid black;
+  border-radius: 15px 50px;
 }
-form {
+form1 {
   grid-area: main-grid;
   display: flex;
   flex-direction: column;
@@ -120,7 +134,7 @@ form {
 label {
   font-size: 20px;
 }
-.form-control {
+.form2-control {
   height: 25px;
   font-size: 20px;
 }

@@ -24,6 +24,9 @@ CREATE TABLE restaurants (
     close_time TIME NOT NULL,
     rating numeric(5,1) NOT NULL,
     phone varchar(14) NULL,
+    img2 varchar(255) NULL,
+    img3 varchar(255) NULL,
+    mapimg varchar(255) NULL,
     CONSTRAINT PK_restaurant PRIMARY KEY (restaurant_id)
 
 );
