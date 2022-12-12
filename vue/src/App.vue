@@ -2,8 +2,8 @@
   <div id="app">
     <img
       id="logo"
-      src="https://iili.io/HofP3Rs.png"
-      alt="table for a few low resolution logo color on transparent background"
+      src="https://iili.io/HofseHX.png"
+      alt="table for a few low resolution logo color on transparent background (1)"
       border="0"
     />
     <div id="nav" v-if="$store.state.token != ''">
@@ -44,7 +44,7 @@
   color: white;
 }
 #logo {
-  width: 300px;
+  width: 150px;
   float: right;
 }
 </style>
