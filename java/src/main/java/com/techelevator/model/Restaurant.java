@@ -17,11 +17,15 @@ public class Restaurant {
     private LocalTime close;
     private double rating;
     private String phoneNumber;
+    private String img2;
+    private String img3;
+    private String mapimg;
+
 
     public Restaurant() {
     }
 
-    public Restaurant(int restaurant_id, String img, String name, String description, String type, String address, String city, String state, String zipcode, LocalTime open, LocalTime close, double rating, String phoneNumber) {
+    public Restaurant(int restaurant_id, String img, String name, String description, String type, String address, String city, String state, String zipcode, LocalTime open, LocalTime close, double rating, String phoneNumber, String img2, String img3, String mapimg) {
         this.restaurant_id = restaurant_id;
         this.img = img;
         this.name = name;
@@ -35,6 +39,9 @@ public class Restaurant {
         this.close = close;
         this.rating = rating;
         this.phoneNumber = phoneNumber;
+        this.img2 = img2;
+        this.img3 = img3;
+        this.mapimg = mapimg;
 
     }
 //    public Restaurant(int restaurant_id, String img, String name, String type, String address, String city, String state, int zipcode, LocalTime open, LocalTime close, double rating) {
@@ -101,6 +108,18 @@ public class Restaurant {
         this.rating = rating;
     }
 
+    public void setImg2(String img2) {
+        this.img2 = img2;
+    }
+
+    public void  setImg3(String img3) {
+        this.img3 = img3;
+    }
+
+    public void setMapimg(String mapimg) {
+        this.mapimg = mapimg;
+    }
+
 
     public String getImg() {
         return img;
@@ -155,6 +174,18 @@ public class Restaurant {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getImg2() {
+        return img2;
+    }
+
+    public String getImg3() {
+        return img3;
+    }
+
+    public String getMapimg() {
+        return mapimg;
     }
 
     @Override

@@ -4,19 +4,19 @@
     <div id="rest-images">
       <img
         class="placeholders"
-        src="https://iili.io/HoKzPun.png"
+        v-bind:src="restaurant.img"
         alt="elementor placeholder image"
         border="0"
       />
       <img
         class="placeholders"
-        src="https://iili.io/HoKzPun.png"
+        v-bind:src="restaurant.img2"
         alt="elementor placeholder image"
         border="0"
       />
       <img
         class="placeholders"
-        src="https://iili.io/HoKzPun.png"
+        v-bind:src="restaurant.img3"
         alt="elementor placeholder image"
         border="0"
       />
@@ -55,7 +55,7 @@
         <h4 id="services">Services: Delivery | Dine-in | Carry-out</h4>
       </div>
       <div id="google-maps">
-        <img id="map" src="https://iili.io/HoKzRY7.png" alt="Google Maps" />
+        <img id="map" v-bind:src="restaurant.mapimg" alt="Google Maps" />
       </div>
     </div>
   </div>
