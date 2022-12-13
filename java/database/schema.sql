@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS events, users, restaurants;
+DROP TABLE IF EXISTS event_voting, events, restaurants, users;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -40,6 +40,15 @@ CREATE TABLE events (
     inviteCode VARCHAR(250) NOT NULL,
     CONSTRAINT PK_event PRIMARY KEY (event_id),
     CONSTRAINT FK_event FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE event_voting (
+    event_id int NOT NULL,
+    restaurant_id int NOT NULL,
+    vote_up int NULL,
+    vote_down int NULL,
+    CONSTRAINT FK_event FOREIGN KEY (event_id) REFERENCES events (event_id),
+    CONSTRAINT FK_restaurant FOREIGN KEY (restaurant_id) REFERENCES restaurants (restaurant_id)
 );
 
 COMMIT TRANSACTION;
