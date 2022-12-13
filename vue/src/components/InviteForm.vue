@@ -1,6 +1,6 @@
 <template>
   <div id="main-grid1">
-    <form1>
+    <form v-on:submit.prevent="createEvent">
       <div id="heading">
         <h1>Create an Event</h1>
         <h3>Let's get this party started!</h3>
@@ -35,19 +35,13 @@
           id="date-input"
           class="form2-control"
           placeholder="Date/Time"
-          v-model="event.date"
+          v-model="event.decisionDate"
           required
         />
-        <button
-          id="generate-btn"
-          type="submit"
-          v-on:submit.prevent="createEvent"
-        >
-          Generate Link!
-        </button>
-        <p id="generatedLink">Invitation Link:</p>
+        <button id="generate-btn" type="submit">Generate Link!</button>
+        <p id="generatedLink">Invitation Link: {{ link }}</p>
       </div>
-    </form1>
+    </form>
   </div>
 </template>
 
@@ -64,22 +58,25 @@ export default {
       event: {
         eventName: "",
         location: "",
-        date: "",
+        decisionDate: "",
+        inviteCode: "",
       },
+      isLocked: false,
       invalidCredentials: false,
     };
+  },
+  computed: {
+    link() {
+      return `${document.location.origin}/invites/${this.event.inviteCode}`;
+    },
   },
   methods: {
     createEvent() {
       EventService.addEvent(this.event)
         .then((response) => {
           if (response.status == 201) {
-            this.event = {
-              eventName: "",
-              location: "",
-              date: "",
-            };
-            this.$router.push({ name: "home" });
+            this.event.inviteCode = response.data.inviteCode;
+            this.isLocked = true;
           }
         })
         .catch((error) => {

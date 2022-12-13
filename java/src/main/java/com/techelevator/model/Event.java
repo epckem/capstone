@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -10,15 +11,15 @@ public class Event {
     private int userId;
     private String eventName;
     private String location;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Timestamp decisionDate;
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime decisionDate;
     private String inviteCode;
 
     public Event() {
 
     }
 
-    public Event(int eventId, int userId, String eventName, String location, Timestamp decisionDate,  String inviteCode) {
+    public Event(int eventId, int userId, String eventName, String location, LocalDateTime decisionDate,  String inviteCode) {
         this.eventId = eventId;
         this.userId = userId;
         this.eventName = eventName;
@@ -39,7 +40,7 @@ public class Event {
         return location;
     }
 
-    public Timestamp getDecisionDate() {
+    public LocalDateTime getDecisionDate() {
         return decisionDate;
     }
 
@@ -67,7 +68,7 @@ public class Event {
         this.location = location;
     }
 
-    public void setDecisionDate(Timestamp decisionDate) {
+    public void setDecisionDate(LocalDateTime decisionDate) {
         this.decisionDate = decisionDate;
     }
 
