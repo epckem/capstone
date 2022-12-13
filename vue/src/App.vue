@@ -8,7 +8,7 @@
       border="0"
     />
     <div id="nav" v-if="$store.state.token != ''">
-      <router-link class="nav-btns" v-bind:to="{ name: 'home' }"
+      <router-link class="nav-btns" v-bind:to="{ name: 'restaurants' }"
         >Home</router-link
       >
       <div id="nav-lines">&nbsp;|&nbsp;</div>

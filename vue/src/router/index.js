@@ -24,6 +24,7 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    { path: '/', redirect: '/restaurants' },
     {
       path: '/',
       name: 'home',
@@ -32,6 +33,7 @@ const router = new Router({
         requiresAuth: true
       }
     },
+
     {
       path: "/login",
       name: "login",
