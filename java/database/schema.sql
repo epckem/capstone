@@ -47,6 +47,7 @@ CREATE TABLE event_voting (
     restaurant_id int NOT NULL,
     vote_up int NULL,
     vote_down int NULL,
+    CONSTRAINT PK_voting PRIMARY KEY (event_id, restaurant_id),
     CONSTRAINT FK_event FOREIGN KEY (event_id) REFERENCES events (event_id),
     CONSTRAINT FK_restaurant FOREIGN KEY (restaurant_id) REFERENCES restaurants (restaurant_id)
 );

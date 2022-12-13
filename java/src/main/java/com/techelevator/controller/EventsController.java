@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.EventDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
+import com.techelevator.model.Restaurant;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -48,5 +49,14 @@ public class EventsController {
     public Event getEventByEventId(@PathVariable int id) {
         return this.eventDao.getEvent(id);
     } //TODO: Check path variable
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/events/{id}/restaurants")
+    public List<Restaurant> restaurantsByEvent(@PathVariable int id) {
+        Event event = this.eventDao.getEvent(id);
+        String filter = event.getLocation();
+
+        return this.eventDao.getEventRestaurants(id, filter, filter);
+    }
 
 }

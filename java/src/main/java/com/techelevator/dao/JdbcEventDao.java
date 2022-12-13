@@ -62,7 +62,29 @@ public class JdbcEventDao implements EventDao{
         return getEvent(event_id);
     }
 
-   private Event mapRowToEvent(SqlRowSet rowSet) {
+    @Override
+    public List<Restaurant> getEventRestaurants(int event_id, String zipcode, String city) {
+
+        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
+                "FROM restaurants r\n" +
+                "LEFT JOIN event_voting ev ON r.restaurant_id = ev.restaurant_id AND ev.event_id = ?\n" +
+                "WHERE r.zip_code ILIKE ? OR r.city ILIKE  ?;";
+        final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, event_id, '%' + zipcode + '%', '%' + city + '%');
+        final List<Restaurant> restaurants = new ArrayList<>();
+        while (results.next()) {
+            restaurants.add(mapRowToRestaurant(results));
+        }
+        return restaurants;
+    }
+
+    @Override
+    public void submitVotes(int event_id, int restaurant_id, int upVote, int downVote) {
+        final String sql = "INSERT INTO event_voting (event_id, restaurant_id, vote_up, vote_down) VALUES (?,?,?,?)\n" +
+                "ON CONFLICT (event_id, restaurant_id) DO UPDATE SET vote_up = EXCLUDED.vote_up + ?, vote_down = EXCLUDED.vote_down + ?;";
+//            this.jdbcTemplate.exchange(sql, event_id, restaurant_id, upVote, downVote);
+    }
+
+    private Event mapRowToEvent(SqlRowSet rowSet) {
        Event event = new Event();
        event.setEventId(rowSet.getInt("event_id"));
        event.setUserId(rowSet.getInt("user_id"));
@@ -73,5 +95,29 @@ public class JdbcEventDao implements EventDao{
 
        return event;
    }
+
+    private Restaurant mapRowToRestaurant(SqlRowSet rowSet) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestaurant_id(rowSet.getInt("restaurant_id"));
+        restaurant.setImg(rowSet.getString("img"));
+        restaurant.setName(rowSet.getString("name"));
+        restaurant.setDescription(rowSet.getString("description"));
+        restaurant.setType(rowSet.getString("type"));
+        restaurant.setAddress(rowSet.getString("address"));
+        restaurant.setCity(rowSet.getString("city"));
+        restaurant.setState(rowSet.getString("state_abbrev"));
+        restaurant.setZipcode(rowSet.getString("zip_code"));
+        restaurant.setOpen(rowSet.getTime("open_time").toLocalTime());
+        restaurant.setClose(rowSet.getTime("close_time").toLocalTime());
+        restaurant.setRating(rowSet.getDouble("rating"));
+        restaurant.setPhoneNumber(rowSet.getString("phone"));
+        restaurant.setImg2(rowSet.getString("img2"));
+        restaurant.setImg3(rowSet.getString("img3"));;
+        restaurant.setMapimg(rowSet.getString("mapimg"));
+
+
+
+        return restaurant;
+    }
 
 }

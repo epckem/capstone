@@ -1,6 +1,6 @@
 <template>
   <div id="main-grid1">
-    <form1>
+    <form>
       <div id="heading">
         <h1>Create an Event</h1>
         <h3>Let's get this party started!</h3>
@@ -47,7 +47,7 @@
         </button>
         <p id="generatedLink">Invitation Link:</p>
       </div>
-    </form1>
+    </form>
   </div>
 </template>
 
