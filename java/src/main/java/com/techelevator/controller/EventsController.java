@@ -44,6 +44,7 @@ public class EventsController {
 
     }
 
+    @PreAuthorize("permitAll()")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/events/{id}")
     public Event getEventByEventId(@PathVariable int id) {

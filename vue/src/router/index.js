@@ -9,6 +9,8 @@ import Restaurants from '../views/Restaurants.vue'
 import CreateEvent from '../views/CreateEvent.vue'
 import RestaurantDetails from '../views/RestaurantDetailsPage.vue'
 import Event from '../views/Event.vue'
+import Invite from '../components/Invite.vue'
+
 
 Vue.use(Router)
 
@@ -86,9 +88,17 @@ const router = new Router({
       }
     },
     {
-      path: 'events/:id',
+      path: '/events/:id',
       name: 'eventPage',
       component: Event,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/invites/:code',
+      name: 'invite',
+      component: Invite,
       meta: {
         requiresAuth: false
       }

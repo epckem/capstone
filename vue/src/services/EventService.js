@@ -9,7 +9,7 @@ export default {
     getEvents(code) {
         const options = {
             params: {
-                code
+                inviteCode: code
             }
         };
 
