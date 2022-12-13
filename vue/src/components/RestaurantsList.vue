@@ -8,12 +8,6 @@
       v-bind:key="restaurant.restaurant_id"
       :restaurant="restaurant"
     />
-
-    <div class="loading" v-if="isLoading">
-      <img
-        src="https://i.pinimg.com/originals/3b/d6/36/3bd636710de01d3256732078071c22c4.gif"
-      />
-    </div>
   </div>
 </template>
 
@@ -26,7 +20,6 @@ export default {
   data() {
     return {
       searchTerm: "",
-      isLoading: false,
     };
   },
   components: {

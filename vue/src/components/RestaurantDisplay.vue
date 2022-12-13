@@ -87,6 +87,7 @@ body.display {
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
   grid-template-areas: "img-container   info-container";
+  cursor: pointer;
 }
 .img-container {
   grid-area: img-container;
