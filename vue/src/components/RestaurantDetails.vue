@@ -173,8 +173,10 @@ h1 {
 }
 
 .placeholders {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .ratingStar {
