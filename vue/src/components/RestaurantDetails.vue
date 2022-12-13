@@ -1,5 +1,5 @@
 <template>
-  <div class="details" id="main-grid">
+  <div class="details" id="main-grid2">
     <h1 id="rest-name">{{ restaurant.name }}</h1>
     <div id="rest-images">
       <img
@@ -55,7 +55,12 @@
         <h4 id="services">Services: Delivery | Dine-in | Carry-out</h4>
       </div>
       <div id="google-maps">
-        <img id="map" v-bind:src="restaurant.mapimg" alt="Google Maps" />
+        <a
+          target="_blank"
+          href="https://www.google.com/maps/@39.1585279,-84.469756,15z"
+        >
+          <img id="map" v-bind:src="restaurant.mapimg" alt="Google Maps" />
+        </a>
       </div>
     </div>
   </div>
@@ -99,7 +104,7 @@ body.img-details {
 </style>
 
 <style scoped>
-#main-grid {
+#main-grid2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
