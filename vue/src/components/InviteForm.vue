@@ -1,6 +1,6 @@
 <template>
   <div id="main-grid1">
-    <form v-on:submit.prevent="createEvent">
+    <form id="form1" v-on:submit.prevent="createEvent">
       <div id="heading">
         <h1>Create an Event</h1>
         <h3>Let's get this party started!</h3>
@@ -118,7 +118,7 @@ body.invite-img {
   border: 3px solid black;
   border-radius: 15px 50px;
 }
-form1 {
+#form1 {
   grid-area: main-grid;
   display: flex;
   flex-direction: column;

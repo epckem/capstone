@@ -131,7 +131,6 @@ body.login {
   align-items: end;
   justify-content: center;
   color: white;
-  font-family: "Times New Roman", Times, serif;
   font-size: 40px;
 }
 
@@ -157,19 +156,15 @@ body.login {
 
 #username {
   grid-area: username;
-  font-family: "Poppins", Times, serif;
 }
 #password {
   grid-area: password;
-  font-family: "Times New Roman", Times, serif;
 }
 #confirmPassword {
   grid-area: confirm-password;
-  font-family: "Times New Roman", Times, serif;
 }
 #submit-btn {
   grid-area: submit-btn;
-  font-family: "Times New Roman", Times, serif;
   margin-top: 20px;
   font-size: 20px;
   height: 27px;
@@ -177,7 +172,6 @@ body.login {
 #login {
   grid-area: login;
   color: white;
-  font-family: "Times New Roman", Times, serif;
   font-size: 20px;
 }
 .form-control {

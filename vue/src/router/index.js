@@ -8,6 +8,7 @@ import store from '../store/index'
 import Restaurants from '../views/Restaurants.vue'
 import CreateEvent from '../views/CreateEvent.vue'
 import RestaurantDetails from '../views/RestaurantDetailsPage.vue'
+import Event from '../views/Event.vue'
 
 Vue.use(Router)
 
@@ -82,6 +83,14 @@ const router = new Router({
       component: RestaurantDetails,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: 'events/:id',
+      name: 'eventPage',
+      component: Event,
+      meta: {
+        requiresAuth: false
       }
     }
   ]
