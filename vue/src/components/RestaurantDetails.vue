@@ -200,5 +200,7 @@ h1 {
   height: 300px;
   margin-left: 40px;
   margin-top: 70px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 </style>
