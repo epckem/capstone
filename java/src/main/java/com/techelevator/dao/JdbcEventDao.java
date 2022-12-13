@@ -81,8 +81,22 @@ public class JdbcEventDao implements EventDao{
     public void submitVotes(int event_id, int restaurant_id, int upVote, int downVote) {
         final String sql = "INSERT INTO event_voting (event_id, restaurant_id, vote_up, vote_down) VALUES (?,?,?,?)\n" +
                 "ON CONFLICT (event_id, restaurant_id) DO UPDATE SET vote_up = EXCLUDED.vote_up + ?, vote_down = EXCLUDED.vote_down + ?;";
-//            this.jdbcTemplate.exchange(sql, event_id, restaurant_id, upVote, downVote);
+           this.jdbcTemplate.update(sql, event_id, restaurant_id, upVote, downVote);
     }
+
+    @Override
+    public Event getEventByCode(String inviteCode) {
+        Event event = null;
+        final String sql = "SELECT event_id, user_id, eventName, location, decisionDate, inviteCode\n" +
+                "FROM events\n" +
+                "WHERE inviteCode = ?;";
+        final SqlRowSet result = this.jdbcTemplate.queryForRowSet(sql, inviteCode);
+        if (result.next()) {
+            event = mapRowToEvent(result);
+        }
+        return event;
+    }
+
 
     private Event mapRowToEvent(SqlRowSet rowSet) {
        Event event = new Event();

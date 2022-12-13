@@ -27,12 +27,12 @@ public class EventsController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/events")
-    public List<Event> getEventsByUser(Principal principal) {
-        User user = userDao.findByUsername(principal.getName());
-        int id = user.getId();
-        return this.eventDao.getEventsByUser(id);
-    }
+//    @GetMapping("/events")
+//    public List<Event> getEventsByUser(Principal principal) {
+//        User user = userDao.findByUsername(principal.getName());
+//        int id = user.getId();
+//        return this.eventDao.getEventsByUser(id);
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/events")
@@ -50,6 +50,7 @@ public class EventsController {
         return this.eventDao.getEvent(id);
     } //TODO: Check path variable
 
+    @PreAuthorize("permitAll")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/events/{id}/restaurants")
     public List<Restaurant> restaurantsByEvent(@PathVariable int id) {
@@ -57,6 +58,12 @@ public class EventsController {
         String filter = event.getLocation();
 
         return this.eventDao.getEventRestaurants(id, filter, filter);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/events")
+    public Event eventByInviteCode(@RequestParam String inviteCode) {
+        return this.eventDao.getEventByCode(inviteCode);
     }
 
 }

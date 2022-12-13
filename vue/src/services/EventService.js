@@ -6,8 +6,14 @@ export default {
         return http.post("/events", event)
     },
 
-    getEvents() {
-        return http.get("/events")
+    getEvents(code) {
+        const options = {
+            params: {
+                code
+            }
+        };
+
+        return http.get("/events", options)
     },
 
     getEvent(id) {

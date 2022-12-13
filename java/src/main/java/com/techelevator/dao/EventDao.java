@@ -18,5 +18,7 @@ public interface EventDao {
 
     void submitVotes(int event_id, int restaurant_id, int upVote, int downVote);
 
+    Event getEventByCode(String inviteCode);
+
 
 }
