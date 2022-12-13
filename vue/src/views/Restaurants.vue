@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <h1 id="title-restaurants">Restaurants</h1>
-    <search-bar @change="retrieveRestaurants"></search-bar>
+    <search-bar id="search-bar" @change="retrieveRestaurants"></search-bar>
     <restaurant-list :restaurants="restaurants"></restaurant-list>
   </div>
 </template>

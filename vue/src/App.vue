@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img
+      v-if="$store.state.token != ''"
       id="logo"
       src="https://iili.io/HofseHX.png"
       alt="table for a few low resolution logo color on transparent background (1)"

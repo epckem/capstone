@@ -1,6 +1,7 @@
 <template>
-  <div class="search-filter">
+  <div class="search-input">
     <input
+      id="search-input"
       type="text"
       v-model="searchTerm"
       placeholder="Search by ZipCode or City"
@@ -26,4 +27,9 @@ export default {
 </script>
 
 <style>
+#search-input {
+  background: none;
+  width: 385px;
+  border: none;
+}
 </style>
