@@ -67,6 +67,9 @@ import moment from "moment";
 
 export default {
   name: "restaurant-details",
+  beforeCreate() {
+    document.body.className = "img-details";
+  },
   methods: {
     convertTime(time) {
       return moment(time, "HH:mm:ss").format("h:mm A");
@@ -85,6 +88,15 @@ export default {
   },
 };
 </script>
+
+<style>
+body.img-details {
+  background-image: url("https://iili.io/HoKnma1.webp");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 30%;
+}
+</style>
 
 <style scoped>
 #main-grid {
