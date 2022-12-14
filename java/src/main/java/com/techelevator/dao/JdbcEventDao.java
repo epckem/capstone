@@ -65,7 +65,7 @@ public class JdbcEventDao implements EventDao{
     @Override
     public List<Restaurant> getEventRestaurants(int event_id, String zipcode, String city) {
 
-        final String sql = "SELECT restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
+        final String sql = "SELECT r.restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
                 "FROM restaurants r\n" +
                 "LEFT JOIN event_voting ev ON r.restaurant_id = ev.restaurant_id AND ev.event_id = ?\n" +
                 "WHERE r.zip_code ILIKE ? OR r.city ILIKE  ?;";

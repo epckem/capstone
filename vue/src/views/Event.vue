@@ -1,7 +1,7 @@
 <template>
   <div>
-    <event-details />
-    <restaurant-list />
+    <event-details :event="event"></event-details>
+    <restaurant-list :restaurants="restaurants"></restaurant-list>
   </div>
 </template>
 
@@ -14,21 +14,21 @@ export default {
     EventDetails,
     RestaurantList,
   },
-  // data() {
-  //   return {
-  //     event: {},
-  //     restaurants: {},
-  //   };
-  // },
+  data() {
+    return {
+      event: {},
+      restaurants: [],
+    };
+  },
   created() {
     EventService.getEvent(this.$route.params.id)
       .then((response) => {
-        this.EventDetails = response.data;
+        this.event = response.data;
         return this.event.eventId;
       })
       .then((eventId) => EventService.getEventRestaurants(eventId))
       .then((resp) => {
-        this.RestaurantList = resp.data;
+        this.restaurants = resp.data;
       });
   },
 };

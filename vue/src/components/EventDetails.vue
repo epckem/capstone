@@ -1,11 +1,10 @@
 <template>
   <div class="event-details">
-      <h1 id="event-name">{{ event.eventName }}</h1>
-    
-        <h2>{{ event.location }}</h2>
-        <p>{{ event.decisionDate }}</p>
-        
-    </div>
+    <h2>{{ event.eventName }}</h2>
+
+    <h3>{{ event.location }}</h3>
+    <h3>{{ event.decisionDate }}</h3>
+  </div>
 </template>
 
 <script>
