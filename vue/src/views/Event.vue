@@ -1,7 +1,8 @@
 <template>
   <div>
     <event-details :event="event"></event-details>
-    <restaurant-list :restaurants="restaurants"></restaurant-list>
+    <restaurant-list :restaurants="$store.state.restaurants"></restaurant-list>
+    <button @click="castVotes">Record my votes</button>
   </div>
 </template>
 
@@ -18,7 +19,11 @@ export default {
   data() {
     return {
       event: {},
-      restaurants: [],
+      // vote: {
+      //   restaurant_id: "",
+      //   upVote: 0,
+      //   downVote: 0,
+      // },
     };
   },
   created() {
@@ -29,8 +34,23 @@ export default {
       })
       .then((eventId) => EventService.getEventRestaurants(eventId))
       .then((resp) => {
-        this.restaurants = resp.data;
+        this.$store.commit("SET_RESTAURANTS", resp.data);
       });
+  },
+
+  methods: {
+    castVotes() {
+      this.$store.state.restaurants
+        .filter((r) => r.vote && (r.vote === 1 || r.vote === -1))
+        .forEach((r) => {
+          const vote = {
+            restaurant_id: r.restaurant_id,
+            upVote: r.vote === 1 ? 1 : 0,
+            downVote: r.vote === -1 ? 1 : 0,
+          };
+          EventService.submitVotes(this.$route.params.id, vote);
+        });
+    },
   },
 };
 </script>

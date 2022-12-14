@@ -41,6 +41,12 @@ export default new Vuex.Store({
     },
     SET_RESTAURANTS(state, restaurants) {
       state.restaurants = restaurants;
+    },
+    RECORD_VOTE(state, vote) {
+      const restaurant = state.restaurants.find(r => r.restaurant_id == vote.restaurant_id);
+      if (restaurant) {
+        restaurant.vote = vote.vote;
+      }
     }
   }
 })
