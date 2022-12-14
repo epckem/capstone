@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <form id="main-grid" class="form-signin" @submit.prevent="login">
+    <form id="main-grid5" class="form-signin" @submit.prevent="login">
       <h1 id="sign-in" class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
         id="invalid"
@@ -103,7 +103,7 @@ body {
 </style>
 
 <style scoped >
-#main-grid {
+#main-grid5 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 

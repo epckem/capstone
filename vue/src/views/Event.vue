@@ -35,6 +35,9 @@ export default {
 };
 </script>
 
+<style>
+</style>
+
 <style >
 #main-grid {
   display: flex;

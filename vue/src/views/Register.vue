@@ -1,6 +1,6 @@
 <template>
   <div id="register" class="text-center">
-    <form id="main-grid" class="form-register" @submit.prevent="register">
+    <form id="main-grid6" class="form-register" @submit.prevent="register">
       <h1 id="create-account" class="h3 mb-3 font-weight-normal">
         Create Account
       </h1>
@@ -115,7 +115,7 @@ body.login {
 </style>
 
 <style scoped>
-#main-grid {
+#main-grid6 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 50px;
