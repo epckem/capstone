@@ -81,7 +81,7 @@ public class JdbcEventDao implements EventDao{
     public void submitVotes(int event_id, int restaurant_id, int upVote, int downVote) {
         final String sql = "INSERT INTO event_voting (event_id, restaurant_id, vote_up, vote_down) VALUES (?,?,?,?)\n" +
                 "ON CONFLICT (event_id, restaurant_id) DO UPDATE SET vote_up = EXCLUDED.vote_up + ?, vote_down = EXCLUDED.vote_down + ?;";
-           this.jdbcTemplate.update(sql, event_id, restaurant_id, upVote, downVote);
+           this.jdbcTemplate.update(sql, event_id, restaurant_id, upVote, downVote, upVote, downVote);
     }
 
     @Override
