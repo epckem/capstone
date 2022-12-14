@@ -34,15 +34,19 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-
-      <label for="voteUp" class="voting">
-        <input type="radio" name="vote" value="1" />
-        <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
-      </label>
-      <label for="voteDown" class="voting">
-        <input type="radio" name="vote" value="-1" />
-        <img src="..\assets\icons8-thumbs-down-64_updated.png" alt="voteDown" />
-      </label>
+      <div id="thumbs">
+        <label for="voteUp" class="voting">
+          <input type="radio" name="vote" value="1" />
+          <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
+        </label>
+        <label for="voteDown" class="voting">
+          <input type="radio" name="vote" value="-1" />
+          <img
+            src="..\assets\icons8-thumbs-down-64_updated.png"
+            alt="voteDown"
+          />
+        </label>
+      </div>
     </div>
   </div>
 </template>
