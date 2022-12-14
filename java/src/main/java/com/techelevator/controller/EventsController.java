@@ -73,5 +73,5 @@ public class EventsController {
     public void submitOrUpdateVotes(@PathVariable int eid, @RequestBody Vote vote) {
         this.eventDao.submitVotes(eid, vote.getRestaurant_id(), vote.getUpVote(), vote.getDownVote());
     }
-    
+
 }

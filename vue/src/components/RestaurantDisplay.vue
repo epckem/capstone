@@ -38,6 +38,15 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
+      <label for="voteUp">
+      <input type="radio" name="voteUp" value="1" checked>
+      <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp">
+    </label>
+    <label for="voteDown">
+      <input type="radio" name="voteDown" value="-1" checked>
+      <img src="..\assets\icons8-thumbs-down-64_updated.png" alt="voteDown">
+    </label>
+
     </div>
   </div>
 </template>
@@ -94,6 +103,22 @@ body.display {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
 }
 
 .info-container {
