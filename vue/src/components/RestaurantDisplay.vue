@@ -34,14 +34,20 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-      <label for="voteUp" class="voting">
-        <input type="radio" name="voteUp" value="1" checked />
-        <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
-      </label>
-      <label for="voteDown" class="voting">
-        <input type="radio" name="voteDown" value="-1" checked />
-        <img src="..\assets\icons8-thumbs-down-64_updated.png" alt="voteDown" />
-      </label>
+      <div id="thumbs">
+        <label for="voteUp" class="voting">
+          <input id="thumbUp" type="radio" name="voteUp" value="1" checked />
+          <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
+        </label>
+        <label for="voteDown" class="voting">
+          <input type="radio" name="voteDown" value="-1" checked />
+          <img
+            id="thumbDown"
+            src="..\assets\icons8-thumbs-down-64_updated.png"
+            alt="voteDown"
+          />
+        </label>
+      </div>
     </div>
   </div>
 </template>
@@ -103,6 +109,7 @@ body.display {
   opacity: 0;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 [type="radio"] + img {
@@ -184,6 +191,13 @@ div.main div.restaurant h3 {
 }
 .rating {
   padding-top: 10px;
+}
+#thumbs {
+  display: flex;
+  flex-direction: row;
+}
+#thumbUp {
+  margin-bottom: 10px;
 }
 </style>
 
