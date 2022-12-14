@@ -1,13 +1,9 @@
 <template>
-  <div
-    class="restaurant"
-    id="main-grid"
-    @click="viewRestaurantDetails(restaurant.restaurant_id)"
-  >
+  <div class="restaurant" id="main-grid">
     <div id="img-container" class="img-container">
       <img
-        class="list-images"
         id="pointer"
+        class="list-images"
         @click="viewRestaurantDetails(restaurant.restaurant_id)"
         v-bind:src="restaurant.img"
       />
@@ -38,15 +34,14 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-      <label for="voteUp">
-      <input type="radio" name="voteUp" value="1" checked>
-      <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp">
-    </label>
-    <label for="voteDown">
-      <input type="radio" name="voteDown" value="-1" checked>
-      <img src="..\assets\icons8-thumbs-down-64_updated.png" alt="voteDown">
-    </label>
-
+      <label for="voteUp" class="voting">
+        <input type="radio" name="voteUp" value="1" checked />
+        <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
+      </label>
+      <label for="voteDown" class="voting">
+        <input type="radio" name="voteDown" value="-1" checked />
+        <img src="..\assets\icons8-thumbs-down-64_updated.png" alt="voteDown" />
+      </label>
     </div>
   </div>
 </template>
@@ -96,7 +91,6 @@ body.display {
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
   grid-template-areas: "img-container   info-container";
-  cursor: pointer;
 }
 .img-container {
   grid-area: img-container;
@@ -104,20 +98,18 @@ body.display {
   flex-direction: column;
   align-items: center;
 }
-[type=radio] { 
+[type="radio"] {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 40px;
+  height: 40px;
 }
 
-
-[type=radio] + img {
+[type="radio"] + img {
   cursor: pointer;
 }
 
-
-[type=radio]:checked + img {
+[type="radio"]:checked + img {
   outline: 2px solid #f00;
 }
 
