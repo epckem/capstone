@@ -34,20 +34,15 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-      <div id="thumbs">
-        <label for="voteUp" class="voting">
-          <input id="thumbUp" type="radio" name="voteUp" value="1" checked />
-          <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
-        </label>
-        <label for="voteDown" class="voting">
-          <input type="radio" name="voteDown" value="-1" checked />
-          <img
-            id="thumbDown"
-            src="..\assets\icons8-thumbs-down-64_updated.png"
-            alt="voteDown"
-          />
-        </label>
-      </div>
+
+      <label for="voteUp" class="voting">
+        <input type="radio" name="vote" value="1" />
+        <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
+      </label>
+      <label for="voteDown" class="voting">
+        <input type="radio" name="vote" value="-1" />
+        <img src="..\assets\icons8-thumbs-down-64_updated.png" alt="voteDown" />
+      </label>
     </div>
   </div>
 </template>
@@ -55,6 +50,10 @@
 <script>
 import moment from "moment";
 export default {
+  data() {
+    return {};
+  },
+
   beforeCreate() {
     document.body.className = "display";
   },
