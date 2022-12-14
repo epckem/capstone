@@ -67,4 +67,5 @@ public class EventsController {
         return this.eventDao.getEventByCode(inviteCode);
     }
 
+    
 }
