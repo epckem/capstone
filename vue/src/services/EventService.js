@@ -18,5 +18,9 @@ export default {
 
     getEvent(id) {
         return http.get(`/events/${id}`);
+    },
+
+    getEventRestaurants(id) {
+        return http.get(`/events/${id}/restaurants`);
     }
 }
