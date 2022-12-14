@@ -68,6 +68,7 @@ public class EventsController {
         return this.eventDao.getEventByCode(inviteCode);
     }
 
+    @PreAuthorize("permitAll()")
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/events/{eid}/votes")
     public void submitOrUpdateVotes(@PathVariable int eid, @RequestBody Vote vote) {

@@ -36,11 +36,23 @@
       </p>
       <div v-if="isInvitesPath" id="thumbs">
         <label for="voteUp" class="voting">
-          <input type="radio" name="vote" value="1" />
+          <input
+            type="radio"
+            :name="'vote' + restaurant.restaurant_id"
+            @change="onVoteChanged"
+            :value="1"
+            v-model="vote.vote"
+          />
           <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
         </label>
         <label for="voteDown" class="voting">
-          <input type="radio" name="vote" value="-1" />
+          <input
+            type="radio"
+            :name="'vote' + restaurant.restaurant_id"
+            @change="onVoteChanged"
+            v-model="vote.vote"
+            :value="-1"
+          />
           <img
             src="..\assets\icons8-thumbs-down-64_updated.png"
             alt="voteDown"
@@ -55,7 +67,12 @@
 import moment from "moment";
 export default {
   data() {
-    return {};
+    return {
+      vote: {
+        restaurant_id: "",
+        vote: 0,
+      },
+    };
   },
 
   beforeCreate() {
@@ -71,6 +88,13 @@ export default {
     viewRestaurantDetails(id) {
       this.$router.push(`/restaurants/${id}`);
     },
+    onVoteChanged() {
+      this.$store.commit("RECORD_VOTE", this.vote);
+      // console.log(this.vote);
+    },
+  },
+  created() {
+    this.vote.restaurant_id = this.restaurant.restaurant_id;
   },
   computed: {
     isOpen() {
