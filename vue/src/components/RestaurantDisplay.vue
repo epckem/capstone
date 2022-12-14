@@ -34,7 +34,7 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-      <div id="thumbs">
+      <div v-if="isInvitesPath" id="thumbs">
         <label for="voteUp" class="voting">
           <input type="radio" name="vote" value="1" />
           <img src="..\assets\icons8-thumbs-down-64 (1).png" alt="voteUp" />
@@ -78,6 +78,9 @@ export default {
       const closed = moment(this.restaurant.close, "HH:mm:ss");
       const now = moment();
       return now.isAfter(open) && now.isBefore(closed);
+    },
+    isInvitesPath() {
+      return this.$route.name == "eventPage";
     },
   },
 };
