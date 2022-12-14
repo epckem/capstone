@@ -22,5 +22,9 @@ export default {
 
     getEventRestaurants(id) {
         return http.get(`/events/${id}/restaurants`);
+    },
+
+    submitVotes(eid, vote) {
+        return http.post(`/events/${eid}/votes`, vote);
     }
 }

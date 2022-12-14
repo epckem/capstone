@@ -5,6 +5,7 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
 import com.techelevator.model.Restaurant;
 import com.techelevator.model.User;
+import com.techelevator.model.Vote;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -65,6 +66,12 @@ public class EventsController {
     @GetMapping("/events")
     public Event eventByInviteCode(@RequestParam String inviteCode) {
         return this.eventDao.getEventByCode(inviteCode);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/events/{eid}/votes")
+    public void submitOrUpdateVotes(@PathVariable int eid, @RequestBody Vote vote) {
+        this.eventDao.submitVotes(eid, vote.getRestaurant_id(), vote.getUpVote(), vote.getDownVote());
     }
 
 }
