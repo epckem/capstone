@@ -1,9 +1,11 @@
 <template>
   <div class="event-details">
-    <h2>{{ event.eventName }}</h2>
-
-    <h3>{{ event.location }}</h3>
-    <h3>{{ event.decisionDate }}</h3>
+    <h1 id="event-name">{{ event.eventName }}</h1>
+    <div id="event-info">
+      <h3>{{ event.location }}</h3>
+      &nbsp;|&nbsp;
+      <h3>{{ event.decisionDate }}</h3>
+    </div>
   </div>
 </template>
 
@@ -18,4 +20,24 @@ export default {
 </script>
 
 <style>
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#event-name {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+#event-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  margin-bottom: 30px;
+}
 </style>
