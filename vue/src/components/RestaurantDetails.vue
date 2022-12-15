@@ -57,7 +57,7 @@
       <div id="google-maps">
         <a
           target="_blank"
-          href="https://www.google.com/maps/@39.1585279,-84.469756,15z"
+          href="https://www.google.com/maps/search/gomez/@39.1087525,-84.5266325,14z/data=!3m1!4b1"
         >
           <img id="map" v-bind:src="restaurant.mapimg" alt="Google Maps" />
         </a>
