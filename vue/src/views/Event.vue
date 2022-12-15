@@ -5,8 +5,11 @@
       :restaurants="$store.state.restaurants"
       :viewmode="stillVoting ? 'voting' : 'final'"
     ></restaurant-list>
-
-    <button @click="castVotes" v-if="stillVoting">Record my votes</button>
+    <div id="vote-btn">
+      <button class="button" @click="castVotes" v-if="stillVoting">
+        Record my votes
+      </button>
+    </div>
   </div>
 </template>
 
@@ -18,7 +21,6 @@ import EventDetails from "../components/EventDetails.vue";
 export default {
   computed: {
     stillVoting() {
-      //or newDate()
       return new Date() < new Date(this.event.decisionDate);
     },
   },
@@ -29,11 +31,6 @@ export default {
   data() {
     return {
       event: {},
-      // vote: {
-      //   restaurant_id: "",
-      //   upVote: 0,
-      //   downVote: 0,
-      // },
     };
   },
   created() {
@@ -110,5 +107,13 @@ export default {
 }
 div.main div.restaurant div.rating img {
   height: 100%;
+}
+#vote-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.button {
+  font-size: 30px;
 }
 </style>

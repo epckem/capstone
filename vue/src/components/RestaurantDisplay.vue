@@ -177,10 +177,6 @@ div.main div.restaurant {
   border: 3px solid black;
 }
 
-/* div.main div.restaurant {
-  background-color: lightyellow;
-} */
-
 div.main div.restaurant div.rating {
   height: 2rem;
   vertical-align: top;
@@ -198,10 +194,6 @@ div.main div.restaurant p {
 div.main div.restaurant h3 {
   display: inline-block;
 }
-
-/* div.main div.restaurant h1 {
-  font-size: 1rem;
-} */
 
 #pointer {
   cursor: pointer;
