@@ -12,6 +12,9 @@ import RestaurantList from "../components/RestaurantsList.vue";
 import EventDetails from "../components/EventDetails.vue";
 
 export default {
+  computed: {
+    ViewMod() {},
+  },
   components: {
     EventDetails,
     RestaurantList,
