@@ -1,22 +1,24 @@
 <template>
   <div class="restaurants">
-    <restaurant-display
-      class="restaurant"
-      v-for="restaurant in restaurants"
-      v-bind:key="restaurant.restaurant_id"
-      :restaurant="restaurant"
-    />
+    <restaurants-list :restaurants="restaurants" />
   </div>
 </template>
 
 <script>
-import RestaurantDisplay from "./RestaurantDisplay.vue";
+import EventService from "../services/EventService";
+import RestaurantsList from "./RestaurantsList.vue";
 
 export default {
   props: ["restaurants"],
   name: "restaurant-finalists",
-  components: { RestaurantDisplay },
-  created() {},
+  components: { RestaurantsList },
+  created() {
+    EventService.getRestaurantFinalists(this.$route.params.id).then(
+      (response) => {
+        this.$store.commit("SET_RESTAURANTS", response.data);
+      }
+    );
+  },
 };
 </script>
 

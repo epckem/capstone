@@ -1,8 +1,12 @@
 <template>
   <div>
     <event-details :event="event"></event-details>
-    <restaurant-list :restaurants="$store.state.restaurants"></restaurant-list>
-    <button @click="castVotes">Record my votes</button>
+    <restaurant-list
+      :restaurants="$store.state.restaurants"
+      :viewmode="stillVoting ? 'voting' : 'final'"
+    ></restaurant-list>
+
+    <button @click="castVotes" v-if="stillVoting">Record my votes</button>
   </div>
 </template>
 
@@ -13,9 +17,9 @@ import EventDetails from "../components/EventDetails.vue";
 
 export default {
   computed: {
-    ViewMode() {
+    stillVoting() {
       //or newDate()
-      return Date.now >= this.event.decisionDate ? "Final" : "Event";
+      return new Date() < new Date(this.event.decisionDate);
     },
   },
   components: {
@@ -38,10 +42,11 @@ export default {
         this.event = response.data;
         return this.event.eventId;
       })
-      .then((eventId) => EventService.getEventRestaurants(eventId))
-      .then((resp) => {
-        this.$store.commit("SET_RESTAURANTS", resp.data);
-      });
+      .then((eventId) =>
+        this.stillVoting
+          ? this.getCandidates(eventId)
+          : this.retrieveFinalists(eventId)
+      );
   },
 
   methods: {
@@ -56,6 +61,16 @@ export default {
           };
           EventService.submitVotes(this.$route.params.id, vote);
         });
+    },
+    getCandidates(eventId) {
+      EventService.getEventRestaurants(eventId).then((response) => {
+        this.$store.commit("SET_RESTAURANTS", response.data);
+      });
+    },
+    retrieveFinalists(eventId) {
+      EventService.getRestaurantFinalists(eventId).then((response) => {
+        this.$store.commit("SET_RESTAURANTS", response.data);
+      });
     },
   },
 };

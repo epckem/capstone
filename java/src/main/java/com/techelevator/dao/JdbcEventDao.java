@@ -65,7 +65,7 @@ public class JdbcEventDao implements EventDao{
     @Override
     public List<Restaurant> getEventRestaurants(int event_id, String zipcode, String city) {
 
-        final String sql = "SELECT r.restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
+        final String sql = "SELECT (vote_up - vote_down) AS vote_count, r.restaurant_id, img, name, description,type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
                 "FROM restaurants r\n" +
                 "LEFT JOIN event_voting ev ON r.restaurant_id = ev.restaurant_id AND ev.event_id = ?\n" +
                 "WHERE r.zip_code ILIKE ? OR r.city ILIKE  ?;";
@@ -80,7 +80,7 @@ public class JdbcEventDao implements EventDao{
     @Override
     public void submitVotes(int event_id, int restaurant_id, int upVote, int downVote) {
         final String sql = "INSERT INTO event_voting (event_id, restaurant_id, vote_up, vote_down) VALUES (?,?,?,?)\n" +
-                "ON CONFLICT (event_id, restaurant_id) DO UPDATE SET vote_up = EXCLUDED.vote_up + ?, vote_down = EXCLUDED.vote_down + ?;";
+                "ON CONFLICT (event_id, restaurant_id) DO UPDATE SET vote_up = event_voting.vote_up + ?, vote_down = event_voting.vote_down + ?;";
            this.jdbcTemplate.update(sql, event_id, restaurant_id, upVote, downVote, upVote, downVote);
     }
 
@@ -100,11 +100,11 @@ public class JdbcEventDao implements EventDao{
     @Override
     public List<Restaurant> getRestaurantFinalists(int event_id) {
         final String sql = "SELECT (vote_up - vote_down) AS vote_count, r.restaurant_id, img, name, description, type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
-                "\tFROM restaurants r\n" +
-                "\tJOIN event_voting ev ON r.restaurant_id = ev.restaurant_id\n" +
-                "\twhere event_id = ?\n" +
-                "\tORDER BY (vote_up - vote_down) DESC\n" +
-                "\tLIMIT 3;";
+                "FROM restaurants r\n" +
+                "JOIN event_voting ev ON r.restaurant_id = ev.restaurant_id\n" +
+                "WHERE event_id = ?\n" +
+                "ORDER BY (vote_up - vote_down) DESC\n" +
+                "LIMIT 3;";
         final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, event_id);
         final List<Restaurant> restaurants = new ArrayList<>();
         while (results.next()) {
