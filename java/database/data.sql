@@ -34,4 +34,31 @@ INSERT INTO restaurants(img, name, description, type, address, city, state_abbre
     VALUES ('https://s3-media0.fl.yelpcdn.com/bphoto/qJ1w-Bha1TXVFqgWfnpBug/o.jpg', 'MadTree Brewing', 'raft beer and excellent food from Catch-A-Fire Café. The large outdoor beer garden provide great space with an additional bar so you can soak in the outdoors and hang out with your pets. Boasts two private event spaces and venues for parties small to large.', 'Brewery', '3301 Madison Rd', 'Cincinnati', 'OH', '45209', '11:00:00', '23:00:00', '4.5', '(513) 836-8733','https://s3-media0.fl.yelpcdn.com/bphoto/fHd8GcQUk1nL2fPOqOuC-w/o.jpg','https://s3-media0.fl.yelpcdn.com/bphoto/50kBvSv-ZUb3CuTVTKucMQ/o.jpg','https://thumbs2.imgbox.com/5f/7c/8VzsbvBv_t.jpg');
 INSERT INTO events(user_id, eventName, location, decisionDate, inviteCode)
 	VALUES (1, 'Saturday Dinner', '45202', '2022-12-10 10:00:00', 'testURL');
+INSERT INTO events(user_id, eventName, location, decisionDate, inviteCode)
+   	VALUES (1, 'Dinner Out', 'Cincinnati', '2022-12-10 10:00:00', 'e105a654-5042-4300-a3f4-1112adecdd3e');
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 1, 8, 2);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+    	VALUES (2, 2, 3, 7);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 3, 4, 6);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 4, 9, 1);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 5, 8, 2);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 6, 7, 3);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 7, 10, 0);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 8, 8, 2);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 9, 7, 3);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 10, 1, 9);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 13, 5, 5);
+INSERT INTO event_voting(event_id, restaurant_id, vote_up, vote_down)
+	VALUES (2, 15, 6, 4);
+
 COMMIT TRANSACTION;
