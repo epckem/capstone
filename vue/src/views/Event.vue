@@ -12,6 +12,12 @@ import RestaurantList from "../components/RestaurantsList.vue";
 import EventDetails from "../components/EventDetails.vue";
 
 export default {
+  computed: {
+    ViewMode() {
+      //or newDate()
+      return Date.now >= this.event.decisionDate ? "Final" : "Event";
+    },
+  },
   components: {
     EventDetails,
     RestaurantList,

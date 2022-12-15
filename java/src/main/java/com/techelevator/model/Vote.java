@@ -6,6 +6,7 @@ public class Vote {
     private int upVote;
     private int downVote;
 
+
     public Vote(int restaurant_id, int upVote, int downVote) {
         this.restaurant_id = restaurant_id;
         this.upVote = upVote;

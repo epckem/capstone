@@ -97,6 +97,22 @@ public class JdbcEventDao implements EventDao{
         return event;
     }
 
+    @Override
+    public List<Restaurant> getRestaurantFinalists(int event_id) {
+        final String sql = "SELECT (vote_up - vote_down) AS vote_count, r.restaurant_id, img, name, description, type, address, city, state_abbrev, zip_code, open_time, close_time, rating, phone, img2, img3, mapimg\n" +
+                "\tFROM restaurants r\n" +
+                "\tJOIN event_voting ev ON r.restaurant_id = ev.restaurant_id\n" +
+                "\twhere event_id = ?\n" +
+                "\tORDER BY (vote_up - vote_down) DESC\n" +
+                "\tLIMIT 3;";
+        final SqlRowSet results = this.jdbcTemplate.queryForRowSet(sql, event_id);
+        final List<Restaurant> restaurants = new ArrayList<>();
+        while (results.next()) {
+            restaurants.add(mapRowToRestaurant(results));
+        }
+        return restaurants;
+    }
+
 
     private Event mapRowToEvent(SqlRowSet rowSet) {
        Event event = new Event();
@@ -128,6 +144,7 @@ public class JdbcEventDao implements EventDao{
         restaurant.setImg2(rowSet.getString("img2"));
         restaurant.setImg3(rowSet.getString("img3"));;
         restaurant.setMapimg(rowSet.getString("mapimg"));
+        restaurant.setVotes(rowSet.getInt("vote_count"));
 
 
 

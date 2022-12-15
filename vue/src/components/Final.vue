@@ -1,11 +1,22 @@
 <template>
-  <restaurants-list />
+  <div class="restaurants">
+    <restaurant-display
+      class="restaurant"
+      v-for="restaurant in restaurants"
+      v-bind:key="restaurant.restaurant_id"
+      :restaurant="restaurant"
+    />
+  </div>
 </template>
 
 <script>
-import RestaurantsList from "../components/RestaurantsList.vue";
+import RestaurantDisplay from "./RestaurantDisplay.vue";
+
 export default {
-  components: { RestaurantsList },
+  props: ["restaurants"],
+  name: "restaurant-finalists",
+  components: { RestaurantDisplay },
+  created() {},
 };
 </script>
 
