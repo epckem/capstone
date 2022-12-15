@@ -8,10 +8,10 @@
       border="0"
     />
     <div id="nav" v-if="$store.state.token != ''">
-      <router-link class="nav-btns" v-bind:to="{ name: 'restaurants' }"
+      <!-- <router-link class="nav-btns" v-bind:to="{ name: 'restaurants' }"
         >Home</router-link
       >
-      <div id="nav-lines">&nbsp;|&nbsp;</div>
+      <div id="nav-lines">&nbsp;|&nbsp;</div> -->
       <router-link class="nav-btns" v-bind:to="{ name: 'CreateEvent' }"
         >Invite</router-link
       >

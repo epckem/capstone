@@ -4,17 +4,25 @@
     <div id="event-info">
       <h3>{{ event.location }}</h3>
       &nbsp;|&nbsp;
-      <h3>{{ event.decisionDate }}</h3>
+      <h3>{{ convertDecisionDate(event.decisionDate) }}</h3>
     </div>
   </div>
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   name: "event-detail",
   props: ["event"],
   beforeCreate() {
     document.body.className = "event-details";
+  },
+  methods: {
+    convertDecisionDate(date) {
+      const newDate = moment(date, "YYYY-MM-DD HH:mm:ss");
+      return newDate.format("MM-DD-YYYY | h:mm A");
+    },
   },
 };
 </script>
