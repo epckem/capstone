@@ -20,5 +20,7 @@ public interface EventDao {
 
     Event getEventByCode(String inviteCode);
 
+    List<Restaurant> getRestaurantFinalists(int event_id);
+
 
 }

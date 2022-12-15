@@ -34,7 +34,7 @@
         {{ convertTime(restaurant.close) }} <span v-if="isOpen">OPEN</span
         ><span v-else>CLOSED</span>
       </p>
-      <div v-if="isInvitesPath" id="thumbs">
+      <div v-if="viewmode == 'voting'" id="thumbs">
         <label for="voteUp" class="voting">
           <input
             type="radio"
@@ -59,6 +59,7 @@
           />
         </label>
       </div>
+      <p v-if="viewmode == 'final'">Net Votes: {{ restaurant.vote_count }}</p>
     </div>
   </div>
 </template>
@@ -79,7 +80,7 @@ export default {
     document.body.className = "display";
   },
   name: "restaurant-display",
-  props: ["restaurant"],
+  props: ["restaurant", "viewmode"],
   methods: {
     convertTime(time) {
       const now = moment(time, "HH:mm:ss");

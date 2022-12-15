@@ -1,11 +1,24 @@
 <template>
-  <restaurants-list />
+  <div class="restaurants">
+    <restaurants-list :restaurants="restaurants" />
+  </div>
 </template>
 
 <script>
-import RestaurantsList from "../components/RestaurantsList.vue";
+import EventService from "../services/EventService";
+import RestaurantsList from "./RestaurantsList.vue";
+
 export default {
+  props: ["restaurants"],
+  name: "restaurant-finalists",
   components: { RestaurantsList },
+  created() {
+    EventService.getRestaurantFinalists(this.$route.params.id).then(
+      (response) => {
+        this.$store.commit("SET_RESTAURANTS", response.data);
+      }
+    );
+  },
 };
 </script>
 

@@ -7,35 +7,18 @@
       v-for="restaurant in restaurants"
       v-bind:key="restaurant.restaurant_id"
       :restaurant="restaurant"
+      :viewmode="viewmode"
     />
   </div>
 </template>
 
 <script>
-// import RestaurantService from "../services/RestaurantService";
 import RestaurantDisplay from "./RestaurantDisplay";
 export default {
   name: "restaurant-list",
-  props: ["restaurants"],
-  data() {
-    return {
-      searchTerm: "",
-    };
-  },
+  props: ["restaurants", "viewmode"],
   components: {
     RestaurantDisplay,
-  },
-
-  methods: {
-    timeStatus() {
-      let time = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      if (this.restaurant.open < time < this.restaurant.close) {
-        return null;
-      }
-    },
   },
   computed: {
     hasData() {

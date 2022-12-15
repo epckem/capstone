@@ -1,9 +1,20 @@
 package com.techelevator.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalTime;
 
 public class Restaurant {
+    public int getVotes() {
+        return votes;
+    }
+
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
+
     private int restaurant_id;
     private String img;
     private  String name;
@@ -20,12 +31,15 @@ public class Restaurant {
     private String img2;
     private String img3;
     private String mapimg;
+    @JsonProperty("vote_count")
+    private int votes;
 
 
     public Restaurant() {
     }
 
     public Restaurant(int restaurant_id, String img, String name, String description, String type, String address, String city, String state, String zipcode, LocalTime open, LocalTime close, double rating, String phoneNumber, String img2, String img3, String mapimg) {
+
         this.restaurant_id = restaurant_id;
         this.img = img;
         this.name = name;
@@ -42,6 +56,7 @@ public class Restaurant {
         this.img2 = img2;
         this.img3 = img3;
         this.mapimg = mapimg;
+
 
     }
 //    public Restaurant(int restaurant_id, String img, String name, String type, String address, String city, String state, int zipcode, LocalTime open, LocalTime close, double rating) {

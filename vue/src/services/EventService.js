@@ -26,5 +26,8 @@ export default {
 
     submitVotes(eid, vote) {
         return http.post(`/events/${eid}/votes`, vote);
+    },
+    getRestaurantFinalists(eid) {
+        return http.get(`/events/${eid}/finalists`);
     }
 }

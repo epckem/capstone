@@ -75,4 +75,11 @@ public class EventsController {
         this.eventDao.submitVotes(eid, vote.getRestaurant_id(), vote.getUpVote(), vote.getDownVote());
     }
 
+    @PreAuthorize("permitAll()")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/events/{eid}/finalists")
+    public List<Restaurant> getFinalists(@PathVariable int eid) {
+       return this.eventDao.getRestaurantFinalists(eid);
+    }
+
 }
