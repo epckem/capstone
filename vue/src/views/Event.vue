@@ -6,7 +6,14 @@
       :viewmode="stillVoting ? 'voting' : 'final'"
     ></restaurant-list>
     <div id="vote-btn">
-      <button class="button" @click="castVotes" v-if="stillVoting">
+      <button
+        class="button"
+        @click="
+          castVotes();
+          reloadPage();
+        "
+        v-if="stillVoting"
+      >
         Record my votes
       </button>
     </div>
@@ -47,6 +54,9 @@ export default {
   },
 
   methods: {
+    reloadPage() {
+      window.location.reload();
+    },
     castVotes() {
       this.$store.state.restaurants
         .filter((r) => r.vote && (r.vote === 1 || r.vote === -1))
